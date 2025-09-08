@@ -54,7 +54,7 @@
 </head>
 <body class="bg-slate-100 text-slate-800">
 
-    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+     <div class="container mx-auto p-4 md:p-8 max-w-7xl">
         <div class="mb-6 text-right">
             <a href="https://github.com/Quincy3iii/QAQC-CHURCH-VALIDATION-TOOL/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-600 hover:underline">
                 View Instructions on GitHub ↗
@@ -116,7 +116,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // --- COMPREHENSIVE RULE ENGINE ---
-    const validationRules = { 'ACU': { description: ['Split System Indoor Unit'], capacityUnit: ['TON'] }, 'AHU': { description: ['Air Handling Unit', 'Small Capacity Air Handling Unit'], capacityUnit: ['TON', 'BTU'] }, 'BHW': { description: ['Gas Fired Boiler'], capacityUnit: ['BTU'] }, 'BWH': { description: ['Electric Boiler'], capacityUnit: ['BTU'] }, 'CHL': { description: ['Chiller'], capacityUnit: ['TON', 'BTU'] }, 'CTU': { description: ['Cooling Tower'], capacityUnit: [] }, 'CU': { description: ['Air Cooled Condensing Unit', 'Split System Heat Pump'], capacityUnit: ['TON'] }, 'DF': { description: ['Duct Furnace'], capacityUnit: ['BTU'] }, 'EF': { description: ['Electric Furnace'], capacityUnit: ['BTU'] }, 'ERV': { description: ['Energy Recovery Ventilator (ERV)'], capacityUnit: ['BTU', 'TON'] }, 'F': { description: ['Gas Fired Furnace', 'Hydronic Furnace'], capacityUnit: ['BTU'] }, 'RTU': { description: ['Roof Top Unit', 'Air Conditioning Package Unit'], capacityUnit: ['TON'] }, 'WAC': { description: ['Wall Mounted AC'], capacityUnit: ['BTU'] }, 'WSHP': { description: ['Water Source Heat Pump'], capacityUnit: ['TON'] }, 'ASR': { description: ['Asphalt Shingle Roof'], capacityUnit: ['Sq.Ft.'] }, 'BUA': { description: ['Built Up Asphalt/Bitumen Roof'], capacityUnit: ['Sq.Ft.'] }, 'CTR': { description: ['Concrete Tile Roof'], capacityUnit: ['Sq.Ft.'] }, 'MSR': { description: ['Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PVC': { description: ['PVC Roof'], capacityUnit: ['Sq.Ft.'] }, 'SPM': { description: ['Single Ply Membrane Roof'], capacityUnit: ['Sq.Ft.'] }, 'SSM': { description: ['Standing-Seam Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PLA': { description: ['Asphalt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLC': { description: ['Concrete Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLD': { description: ['Dirt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLG': { description: ['Gravel Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'SS': { description: ['Low Voltage Sound System'], capacityUnit: [] }, 'FLC': { description: ['Carpet Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLT': { description: ['Tile Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLV': { description: ['Vinyl Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLW': { description: ['Wood Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FACP': { description: ['Fire Alarm Control Panel'], capacityUnit: ['AMP', 'AMPS'] }, 'FSSD': { description: ['Fire Riser (Dry)'], capacityUnit: ['GPM'] }, 'FSSW': { description: ['Fire Riser (Wet)', 'Deluge Fire Suppression System (Wet)'], capacityUnit: ['GPM'] }, 'FSSC': { description: ['FM-200 Fire Suppression System (Chemical)'], capacityUnit: ['Other (List in Comments)'] }, 'DOCK': { description: ['Dock Plate'], capacityUnit: ['Ton'] }, 'RUD': { description: ['Automatic Rollup Door'], capacityUnit: [] }, 'EASD': { description: ['Sliding Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'ESD': { description: ['Swinging Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'IASD': { description: ['Sliding Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'ISD': { description: ['Swinging Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'RD': { description: ['Revolving Door Entrances (Storehouse Only)'], capacityUnit: [] }, 'COOL': { description: ['Reach-In Display Cooler (Storehouse Only)', 'Walk-In Cooler (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRZ': { description: ['Reach-In Display Freezer (Storehouse Only)', 'Walk-In Freezer (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRK': { description: ['Forklift Truck - Electric', 'Forklift Truck - Diesel'], capacityUnit: ['Tons'] }, 'FLB': { description: ['Forklift Battery'], capacityUnit: ['Volts'] }, 'UH': { description: ['Gas Fired Unit Heater', 'Electric Unit Heater'], capacityUnit: ['BTU'] }, 'DRY': { description: ['Clothes Dryer (Storehouse Only)'], capacityUnit: ['N/A'] }, 'WSH': { description: ['Washing Machine (Storehouse Only)'], capacityUnit: ['N/A'] }, 'WDC': { description: ['Washer/Dryer Combo (Storehouse Only)'], capacityUnit: ['N/A'] }, 'FWC': { description: ['Compactor (Storehouse Only)'], capacityUnit: [] }, 'FWB': { description: ['Baler (Storehouse Only)'], capacityUnit: [] },};
+    const validationRules = { 'ACU': { description: ['Split System Indoor Unit'], capacityUnit: ['TON'] }, 'AHU': { description: ['Air Handling Unit', 'Small Capacity Air Handling Unit'], capacityUnit: ['TON', 'BTU'] }, 'BHW': { description: ['Gas Fired Boiler'], capacityUnit: ['BTU'] }, 'BWH': { description: ['Electric Boiler'], capacityUnit: ['BTU'] }, 'CHL': { description: ['Chiller'], capacityUnit: ['TON', 'BTU'] }, 'CTU': { description: ['Cooling Tower'], capacityUnit: [] }, 'CU': { description: ['Air Cooled Condensing Unit', 'Split System Heat Pump'], capacityUnit: ['TON'] }, 'DF': { description: ['Duct Furnace'], capacityUnit: ['BTU'] }, 'EF': { description: ['Electric Furnace'], capacityUnit: ['BTU'] }, 'ERV': { description: ['Energy Recovery Ventilator (ERV)'], capacityUnit: ['BTU', 'TON'] }, 'F': { description: ['Gas Fired Furnace', 'Hydronic Furnace'], capacityUnit: ['BTU'] }, 'RTU': { description: ['Roof Top Unit', 'Air Conditioning Package Unit'], capacityUnit: ['TON'] }, 'WAC': { description: ['Wall Mounted AC'], capacityUnit: ['TON', 'BTU'] }, 'WSHP': { description: ['Water Source Heat Pump'], capacityUnit: ['TON'] }, 'ASR': { description: ['Asphalt Shingle Roof'], capacityUnit: ['Sq.Ft.'] }, 'BUA': { description: ['Built Up Asphalt/Bitumen Roof'], capacityUnit: ['Sq.Ft.'] }, 'CTR': { description: ['Concrete Tile Roof'], capacityUnit: ['Sq.Ft.'] }, 'MSR': { description: ['Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PVC': { description: ['PVC Roof'], capacityUnit: ['Sq.Ft.'] }, 'SPM': { description: ['Single Ply Membrane Roof'], capacityUnit: ['Sq.Ft.'] }, 'SSM': { description: ['Standing-Seam Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PLA': { description: ['Asphalt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLC': { description: ['Concrete Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLD': { description: ['Dirt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLG': { description: ['Gravel Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'SS': { description: ['Low Voltage Sound System'], capacityUnit: [] }, 'FLC': { description: ['Carpet Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLT': { description: ['Tile Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLV': { description: ['Vinyl Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLW': { description: ['Wood Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FACP': { description: ['Fire Alarm Control Panel'], capacityUnit: ['AMP', 'AMPS'] }, 'FSSD': { description: ['Fire Riser (Dry)'], capacityUnit: ['GPM'] }, 'FSSW': { description: ['Fire Riser (Wet)', 'Deluge Fire Suppression System (Wet)'], capacityUnit: ['GPM'] }, 'FSSC': { description: ['FM-200 Fire Suppression System (Chemical)'], capacityUnit: ['Other (List in Comments)'] }, 'DOCK': { description: ['Dock Plate'], capacityUnit: ['Ton'] }, 'RUD': { description: ['Automatic Rollup Door'], capacityUnit: [] }, 'EASD': { description: ['Sliding Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'ESD': { description: ['Swinging Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'IASD': { description: ['Sliding Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'ISD': { description: ['Swinging Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'RD': { description: ['Revolving Door Entrances (Storehouse Only)'], capacityUnit: [] }, 'COOL': { description: ['Reach-In Display Cooler (Storehouse Only)', 'Walk-In Cooler (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRZ': { description: ['Reach-In Display Freezer (Storehouse Only)', 'Walk-In Freezer (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRK': { description: ['Forklift Truck - Electric', 'Forklift Truck - Diesel'], capacityUnit: ['Tons'] }, 'FLB': { description: ['Forklift Battery'], capacityUnit: ['Volts'] }, 'UH': { description: ['Gas Fired Unit Heater', 'Electric Unit Heater'], capacityUnit: ['BTU'] }, 'DRY': { description: ['Clothes Dryer (Storehouse Only)'], capacityUnit: ['N/A'] }, 'WSH': { description: ['Washing Machine (Storehouse Only)'], capacityUnit: ['N/A'] }, 'WDC': { description: ['Washer/Dryer Combo (Storehouse Only)'], capacityUnit: ['N/A'] }, 'FWC': { description: ['Compactor (Storehouse Only)'], capacityUnit: [] }, 'FWB': { description: ['Baler (Storehouse Only)'], capacityUnit: [] },};
     const welfareOnlyAcronyms = new Set(['DOCK', 'RUD', 'EASD', 'ESD', 'IASD', 'ISD', 'RD', 'COOL', 'FRZ', 'FRK', 'FLB', 'UH', 'DRY', 'WSH', 'WDC', 'FWC', 'FWB']);
     const refrigerantNotRequiredAssets = new Set(['Wood Flooring', 'Washing Machine (Storehouse Only)', 'Washer/Dryer Combo (Storehouse Only)', 'Vinyl Flooring', 'Tile Flooring', 'Swinging Automatic or Manual Entrances Interior (Storehouse Only)', 'Swinging Automatic or Manual Entrances Exterior (Storehouse Only)', 'Standing-Seam Metal Roof', 'Sliding Automatic or Manual Entrances Interior (Storehouse Only)', 'Sliding Automatic or Manual Entrances Exterior (Storehouse Only)', 'Single Ply Membrane Roof', 'Revolving Door Entrances (Storehouse Only)', 'PVC Roof', 'Metal Roof', 'Low Voltage Sound System', 'Gravel Parking Lot', 'Gas Fired Unit Heater', 'Gas Fired Furnace', 'Furnace', 'Hydronic Furnace', 'Gas Fired Boiler', 'Fire Suppression Hood', 'FM-200 Fire Suppression System (Chemical)', 'Forklift Battery', 'Fire Riser (Dry)', 'Fire Riser (Wet)', 'Electric Unit Heater', 'Electric Furnace', 'Dock Plate', 'Dirt Parking Lot', 'Deluge Fire Suppression System (Wet)', 'Concrete Tile Roof', 'Concrete Parking Lot', 'Compactor (Storehouse Only)', 'Clothes Dryer (Storehouse Only)', 'Carpet Flooring', 'Built Up Asphalt/Bitumen Roof', 'Baler (Storehouse Only)', 'Automatic Rollup Door', 'Asphalt Shingle Roof', 'Asphalt Parking Lot', 'Fire Alarm Control Panel']);
     const splitSystemIndoor = new Set(['ACU', 'AHU', 'CHL', 'F', 'WSHP']);
@@ -138,7 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const rule = validationRules[assetAcronym];
         
         const isTagOnPM = (row['Reason Not Tagged'] || '').trim().toLowerCase() === 'tag on pm (put reason in comments)';
-        
+        const isNotFoundPlaceholder = (row['Reason Not Tagged'] || '').trim() === 'Not Found' && !row['TagID'];
+
         if (assetNumber.startsWith('TEMPLATE') && row['TagID'] !== 'DELETE') {
             errors.push({ field: 'TagID', value: row['TagID'], reason: 'Template asset must be marked for deletion with TagID = "DELETE".', category: 'Template Rows to Delete' });
             return errors;
@@ -151,39 +152,38 @@ document.addEventListener('DOMContentLoaded', function() {
             return errors;
         }
 
-        if ((row['Reason Not Tagged'] || '').trim() === 'Not Found') {
-            if (!row['TagID']) { 
-                if (row['att_Space (Floor)'] !== 'Not Found') errors.push({ field: 'att_Space (Floor)', value: row['att_Space (Floor)'], reason: 'Floor must be "Not Found".', category: 'Missing Required Data' });
-                if (row['att_Room'] !== 'Not Found') errors.push({ field: 'att_Room', value: row['att_Room'], reason: 'Room must be "Not Found".', category: 'Missing Required Data' });
-                if (!row['att_Areas Served']) errors.push({ field: 'att_Areas Served', value: row['att_Areas Served'], reason: 'Areas Served cannot be blank.', category: 'Missing Required Data' });
-                const noNameplate = "No Nameplate Information Available";
-                if (row['att_Manufacturer'] !== noNameplate) errors.push({ field: 'att_Manufacturer', value: row['att_Manufacturer'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
-                if (row['att_Model'] !== noNameplate) errors.push({ field: 'att_Model', value: row['att_Model'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
-                if (row['att_Serial #'] !== noNameplate) errors.push({ field: 'att_Serial #', value: row['att_Serial #'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
+        // --- UPDATED: Stricter "Not Found" check with early exit ---
+        if (isNotFoundPlaceholder) {
+            if (row['att_Space (Floor)'] !== 'Not Found') errors.push({ field: 'att_Space (Floor)', value: row['att_Space (Floor)'], reason: 'Floor must be "Not Found".', category: 'Missing Required Data' });
+            if (row['att_Room'] !== 'Not Found') errors.push({ field: 'att_Room', value: row['att_Room'], reason: 'Room must be "Not Found".', category: 'Missing Required Data' });
+            if (!row['att_Areas Served']) errors.push({ field: 'att_Areas Served', value: row['att_Areas Served'], reason: 'Areas Served cannot be blank.', category: 'Missing Required Data' });
+            const noNameplate = "No Nameplate Information Available";
+            if (row['att_Manufacturer'] !== noNameplate) errors.push({ field: 'att_Manufacturer', value: row['att_Manufacturer'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
+            if (row['att_Model'] !== noNameplate) errors.push({ field: 'att_Model', value: row['att_Model'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
+            if (row['att_Serial #'] !== noNameplate) errors.push({ field: 'att_Serial #', value: row['att_Serial #'], reason: `Must be "${noNameplate}".`, category: 'Missing Required Data' });
 
-                let expectedComment = '';
-                let reasonText = '';
+            let expectedComment = '';
+            let reasonText = '';
 
-                if (assetAcronym === 'FLW') {
-                    expectedComment = 'no cultural center flw found';
-                    reasonText = '"No Cultural Center FLW found"';
-                } else {
-                    expectedComment = `no ${assetAcronym} found`.toLowerCase();
-                    reasonText = `"No ${assetAcronym} found"`;
-                }
-                
-                if (!(row['att_Validation Comment'] || '').toLowerCase().includes(expectedComment)) {
-                    errors.push({ field: 'att_Validation Comment', value: row['att_Validation Comment'], reason: `Comment must contain ${reasonText}.`, category: 'Missing Required Data' });
-                }
-                return errors; 
+            if (assetAcronym === 'FLW') {
+                expectedComment = 'no cultural center flw found';
+                reasonText = '"No Cultural Center FLW found"';
+            } else {
+                expectedComment = `no ${assetAcronym} found`.toLowerCase();
+                reasonText = `"No ${assetAcronym} found"`;
             }
+            
+            if (!(row['att_Validation Comment'] || '').toLowerCase().includes(expectedComment)) {
+                errors.push({ field: 'att_Validation Comment', value: row['att_Validation Comment'], reason: `Comment must contain ${reasonText}.`, category: 'Missing Required Data' });
+            }
+            return errors; 
         }
 
         const roomName = row['att_Room'] || '';
         if (roomName) {
             const words = roomName.split(' ');
             if (words.length === 1 && /^[A-Z]?\d+$/i.test(words[0])) {
-                errors.push({ field: 'att_Room', value: roomName, reason: 'Room number requires a descriptive prefix (e.g., \'Mechanical M2\').', category: 'Formatting & Syntax Errors' });
+                errors.push({ field: 'att_Room', value: roomName, reason: 'Room number requires a descriptive prefix (e.g., \'Room M101\').', category: 'Formatting & Syntax Errors' });
             }
             if (words.some(w => w && w[0] !== w[0].toUpperCase())) {
                 errors.push({ field: 'att_Room', value: roomName, reason: 'Improper capitalization. All words should be capitalized.', category: 'Formatting & Syntax Errors' });
@@ -220,15 +220,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        const spaceFloor = row['att_Space (floor)'];
+        const spaceFloor = row['att_Space (Floor)'];
         const environment = row['Environment'];
+
         if (spaceFloor === 'Attic' && environment !== 'Wide variation in temp/humidity/dust') {
             errors.push({ field: 'Environment', value: environment, reason: 'For Attic space, Environment must be "Wide variation in temp/humidity/dust".', category: 'Miscellaneous Errors' });
         }
         if (spaceFloor === 'Roof' && environment !== 'Extremes of temperature') {
             errors.push({ field: 'Environment', value: environment, reason: 'For Roof space, Environment must be "Extremes of temperature".', category: 'Miscellaneous Errors' });
         }
+        if (spaceFloor === 'Building Exterior' && environment !== 'Extremes of temperature') {
+            errors.push({ field: 'Environment', value: environment, reason: 'For Building Exterior space, Environment must be "Extremes of temperature".', category: 'Miscellaneous Errors' });
+        }
         
+        const capacityQty = row['att_Capacity Quantity'];
+        if (capacityQty && isNaN(parseFloat(capacityQty))) {
+            errors.push({ field: 'att_Capacity Quantity', value: capacityQty, reason: 'Capacity Quantity must be a numerical value.', category: 'Formatting & Syntax Errors' });
+        }
+
         if (assetAcronym && !assetNumber.startsWith('TEMPLATE')) {
             if (!rule) {
                 errors.push({ field: 'att_Asset #', value: assetAcronym, reason: `Unknown Acronym '${assetAcronym}'.`, category: 'Formatting & Syntax Errors' });
@@ -241,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                      if (capacityUnit !== 'N/A') {
                          errors.push({ field: 'att_Capacity Unit', value: capacityUnit, reason: `Capacity Unit must be "N/A" for '${assetDescription}'.`, category: 'Formatting & Syntax Errors' });
                      }
-                     const capacityQty = row['att_Capacity Quantity'];
+                     
                      if (capacityQty && Number(capacityQty) !== 0) {
                          errors.push({ field: 'att_Capacity Quantity', value: capacityQty, reason: `Capacity Quantity must be "0" when no unit is required.`, category: 'Formatting & Syntax Errors' });
                      }
@@ -290,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
             errors.push({ field: 'att_Asset #', value: assetNumber, reason: `Asset type '${assetDescription}' should not be in a Meetinghouse.`, category: 'Miscellaneous Errors' });
         }
 
-        // --- NEW: FLC-1 specific checks ---
         if (assetNumber === 'FLC-1') {
             if (row['att_Room'] !== 'Building Interior') {
                 errors.push({ 
@@ -345,9 +353,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const assetNumbers = new Set();
         const foundDuplicates = new Set();
+        const modelGroups = new Map();
 
         data.forEach(row => {
             const assetNum = row['att_Asset #'];
+            const acronym = getAcronym(assetNum);
+
             if (assetNum) {
                 if (assetNumbers.has(assetNum) && !foundDuplicates.has(assetNum)) {
                     zoneResults.errors.push({ assetNum, reason: `Duplicate Asset # '${assetNum}' found in this work zone.`, category: 'Formatting & Syntax Errors' });
@@ -355,10 +366,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 assetNumbers.add(assetNum);
             }
-            const acronym = getAcronym(row['att_Asset #']);
+            
             if (splitSystemIndoor.has(acronym)) zoneResults.indoorCount++;
             if (splitSystemOutdoor.has(acronym)) zoneResults.outdoorCount++;
+
+            // Group models for capacity check
+            const model = row['att_Model'];
+            if (model && model !== 'No Nameplate Information Available' && acronym !== 'ERV') {
+                if (!modelGroups.has(model)) {
+                    modelGroups.set(model, []);
+                }
+                modelGroups.get(model).push(row['att_Capacity Quantity']);
+            }
         });
+
+        // Check for inconsistent capacities in duplicate models
+        for (const [model, capacities] of modelGroups.entries()) {
+            if (capacities.length > 1) {
+                const uniqueCapacities = new Set(capacities.filter(c => c)); // Filter out blank/null capacities
+                if (uniqueCapacities.size > 1) {
+                    zoneResults.errors.push({
+                        assetNum: `Model: ${model}`,
+                        reason: `Inconsistent capacities found for model '${model}'. Capacities found: [${Array.from(uniqueCapacities).join(', ')}].`,
+                        category: 'Miscellaneous Errors'
+                    });
+                }
+            }
+        }
 
         if (buildingType === 'Meetinghouse') {
             const foundAcronyms = new Set(data.map(a => getAcronym(a['att_Asset #'])));
@@ -457,6 +491,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const zoneData = workZoneGroups[workZone];
                     let allErrors = [];
                     let templateRowErrors = false;
+                    
+                    const zoneAnalysis = analyzeWorkZoneData(zoneData, buildingType);
+                    zoneAnalysis.errors.forEach(err => allErrors.push({ ...err, rowNum: 'Work Zone-wide', assetNum: err.assetNum, workZone: workZone, ninoxId: 'N/A' }));
 
                     zoneData.forEach((row, index) => {
                         const rowErrors = validateRow(row, buildingType, zoneData);
@@ -467,9 +504,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                     });
-
-                    const zoneAnalysis = analyzeWorkZoneData(zoneData, buildingType);
-                    zoneAnalysis.errors.forEach(err => allErrors.push({ ...err, rowNum: 'Work Zone-wide', assetNum: err.assetNum, workZone: workZone, ninoxId: 'N/A' }));
                     
                     allReportsData[workZone] = {
                         data: zoneData,
