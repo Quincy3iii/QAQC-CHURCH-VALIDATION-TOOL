@@ -1,105 +1,56 @@
-# Asset Data QA/QC Analyst v4.1 - README
-
-## Overview
-
-The **Asset Data QA/QC Analyst** is a browser-based tool designed to automate the quality control process for asset data. It validates a CSV export against a comprehensive set of rules to ensure data integrity, formatting consistency, and completeness.
-
-The tool groups assets by their "WORK ZONE," runs a series of checks on each asset and on the zone as a whole, and then generates a detailed report of all errors found. This allows for rapid identification and correction of data issues before final submission.
-
----
-
-## How to Use
-
-Using the tool is a simple, four-step process:
-
-1.  **Open the File**: Using the most recent GitHub.io link; https://quincy3iii.github.io/QAQC-CHURCH-VALIDATION-TOOL/.
-2.  **Upload Data**: Drag and drop your CSV data file onto the upload area, or click the area to select the file from your computer.
-3.  **Select Building Type**: Choose the appropriate building type from the dropdown menu that appears. This selection is crucial as some validation rules are specific to the building type.
-4.  **Run Audit**: Click the **"Run Internal Audit"** button to start the validation process.
-5.  **Review & Download**: The results will appear below in the "Audit Report" section, organized by Work Zone. You can expand or collapse each zone's report. From here, you can download two different CSV reports:
-    * **Download Detailed CSV**: A row-by-row list of every error found across all work zones.
-    * **Download Summary CSV**: A high-level summary of the total count of errors per category for each work zone.
-
-
-
----
-
-## Function & Rule List
-
-The following is a comprehensive list of all validation checks performed by the tool.
-
-### 1. File Handling & Templates
-
-These rules ensure that template rows, which are not real assets, are handled correctly.
-
-* **Template Deletion**: Any asset with an `att_Asset #` starting with `TEMPLATE` must have its `TagID` set to `DELETE`.
-* **Deletion Formatting**: If an asset's `TagID` is `DELETE`, it must also have:
-    * `att_Space (Floor)` = `"Not Found"`
-    * `att_Room` = `"Template"`
-    * `Status` = `"Offline"`
-
-### 2. "Not Found" Assets
-
-These rules apply to assets that are expected but could not be located during the survey.
-
-* **Condition**: This rule set applies when `Reason Not Tagged` is set to `"Not Found"` and the `TagID` field is empty.
-* **Required Fields**:
-    * `att_Space (Floor)` must be `"Not Found"`.
-    * `att_Room` must be `"Not Found"`.
-    * `att_Areas Served` cannot be blank.
-    * `att_Manufacturer`, `att_Model`, and `att_Serial #` must all be set to `"No Nameplate Information Available"`.
-* **Required Comment**: The `att_Validation Comment` must contain the phrase `"No [ACRONYM] found"` (e.g., `"No RTU found"`). The only exception is for `FLW` (Wood Flooring), which must contain `"no cultural center flw found"`.
-
-### 3. Formatting & Syntax Errors
-
-These rules check for common formatting mistakes.
-
-* **Model/Serial Numbers**: The `att_Model` and `att_Serial #` fields should not contain any spaces (unless the value is `"No Nameplate Information Available"`).
-* **Room Number Formatting**:
-    * A room number cannot be a standalone number (e.g., `"112"`). It must have a descriptive prefix (e.g., `"Classroom 112"`).
-    * All words in the room name must be capitalized (e.g., `"Mechanical Room"`, not `"Mechanical room"`).
-    * Cardinal directions must be spelled out (e.g., `"Southwest"` instead of `"SW"`).
-    * Common possessive names must include an apostrophe (e.g., `"Bishop's Office"` instead of `"Bishops Office"`).
-* **Redundant Comments**: The `att_Validation Comment` should not repeat information already present in the `att_Areas Served` field.
-* **Invalid Acronyms**: The acronym derived from the `att_Asset #` (e.g., `RTU` from `RTU-1`) must be a known acronym in the tool's database.
-
-### 4. Missing Required Data
-
-These checks ensure that critical fields are never left blank.
-
-* **Asset Number**: `att_Asset #` cannot be empty.
-* **Date & Condition**: `att_In-Service Date` and `att_NGM CA-Condition` cannot be blank unless `Reason Not Tagged` is `"Tag on PM (put reason in comments)"`.
-* **Photo Requirement**: Each asset must have at least **3 photos**.
-* **Gas Furnace Comment**: For a `Gas Fired Furnace`, the `att_Validation Comment` must either state `"No coil attached."` or mention the word `"Coil"` along with a valid refrigerant type (e.g., R-22, R-410A).
-* **Parent Asset**:
-    * A Duct Furnace (`DF`) must have a parent asset, and that parent must be an Air Handling Unit (`AHU`).
-    * A Forklift Battery (`FLB`) must have a Forklift (`FRK`) as its parent.
-
-### 5. Data Consistency & Logic
-
-These rules validate the relationships between different data fields.
-
-* **Capacity Unit**: The `att_Capacity Unit` must match the allowed unit(s) for that asset's acronym. For example, an `RTU` must have a capacity unit of `TON`. If an asset does not require a unit, its unit must be `N/A` and its `att_Capacity Quantity` must be `0`.
-* **Location vs. Environment**:
-    * If `att_Space (Floor)` is `"Attic"`, the `Environment` must be `"Wide variation in temp/humidity/dust"`.
-    * If `att_Space (Floor)` is `"Roof"`, the `Environment` must be `"Extremes of temperature"`.
-* **Refrigerant**: The `Refrigerant` field should be blank for assets that do not use refrigerant (e.g., flooring, boilers, parking lots).
-* **Nameplate Data**: If `att_Manufacturer` is `"No Nameplate Information Available"`, then `att_Model` and `att_Serial #` must also be `"No Nameplate Information Available"`.
-* **Building Type**: An asset type designated for "Welfare" facilities (e.g., `DOCK`, `FRK`, `COOL`) cannot be present in a "Meetinghouse" file.
-* **FLC-1 Asset**: For the specific asset `FLC-1`:
-    * `att_Room` must be `"Building Interior"`.
-    * `att_Areas Served` must be `"Building Envelope"`.
-
-### 6. Work Zone-Wide Checks
-
-These checks analyze the entire set of assets within a single Work Zone.
-
-* **Duplicate Asset #**: The same `att_Asset #` cannot appear more than once within the same Work Zone.
-* **HVAC Split System Count**: The number of indoor split system units (`ACU`, `AHU`, etc.) should match the number of outdoor units (`CU`, `CTU`). A mismatch is flagged.
-* **Required Meetinghouse Systems**: When the "Meetinghouse" building type is selected, the tool verifies that at least one of each of the following systems is accounted for (either found or documented as "Not Found"):
-    * Sound System (`SS`)
-    * Fire Alarm Panel (`FACP`)
-    * Fire Suppression System (`FSSD`, `FSSW`, or `FSSC`)
-    * Roof System
-    * Parking Lot
-    * Flooring
+Asset Data QA/QC Analyst Tool v4.1
+Overview
+The Asset Data QA/QC Analyst Tool is a powerful, browser-based application designed to internally audit asset data exported from Ninox. It automates the quality control process by running a comprehensive set of validation checks against a CSV file, identifying common errors, inconsistencies, and logical discrepancies.
+This tool helps ensure data integrity before it is used for analysis, reporting, or system import, saving significant time and reducing manual errors.
+Key Features & Validation Rules
+The tool performs a wide array of checks, categorized for clarity.
+1. Global & Work Zone Analysis
+Global Model Inconsistency: Scans the entire dataset to find assets with the same model number but conflicting Manufacturer, Capacity, or Refrigerant data. It uses a "majority wins" rule to identify the correct data and flag only the true outliers.
+Work Zone Duplicate Assets: Identifies any duplicate att_Asset # within the same WORK ZONE.
+System Verifications: Checks for the presence of core building systems (e.g., Roof, Parking Lot, Fire Alarm) based on the selected building type (Meetinghouse or Welfare/Storehouse). The report shows if a system is Found, Missing, or Documented Not Found.
+HVAC Split System Count: Verifies that the number of indoor split system units matches the number of outdoor units within a work zone.
+2. Data Integrity & Required Fields
+Required Fields: Ensures critical fields like att_Asset #, att_In-Service Date, and att_NGM CA-Condition are not blank.
+Template Row Handling: Flags any template assets that have not been properly marked for deletion (TagID = "DELETE").
+"Not Found" Asset Validation: Enforces strict rules for assets marked as "Not Found," ensuring location fields and nameplate data are filled out correctly and that the validation comment is appropriate.
+Photo Requirement: Checks that each asset has at least three photos.
+3. Logical & Consistency Checks
+Condition vs. Age: Cross-references an asset's In-Service Date with its Condition against a BOMA-standard Expected Useful Life (EUL) map to flag:
+New assets (≤ 2 years old) in poor condition.
+Old assets (past their EUL) in excellent condition.
+Refrigerant & Date Inconsistency: Flags assets with an in-service date that is incompatible with the phase-out period of its listed refrigerant (e.g., an asset from 2022 using R-22).
+Refrigerant in Comments: If Refrigerant is set to "Other (List in Comments)", the tool verifies that a valid ASHRAE refrigerant is actually present in the att_Validation Comment.
+Parent/Child Asset Logic:
+Verifies that a Duct Furnace (DF) has a parent asset, and that the parent is an Air Handling Unit (AHU).
+Verifies that a Forklift Battery (FLB) is correctly parented to a Forklift (FRK).
+Building Type Appropriateness: Flags assets that are specific to Welfare/Storehouse facilities if they appear in a Meetinghouse report.
+4. Formatting & Syntax Rules
+Refrigerant Validation: Checks the Refrigerant field against a comprehensive list of ASHRAE-standard refrigerants.
+Room Naming Conventions:
+Enforces proper capitalization.
+Flags room numbers that are missing a descriptive prefix (e.g., "101" instead of "Room 101").
+Checks for correct use of apostrophes in common names (e.g., "Bishop's Office").
+Disallows abbreviated cardinal directions (e.g., "SW").
+No Spaces in Model/Serial: Ensures that model and serial numbers do not contain spaces.
+Capacity Unit Validation: Checks that the att_Capacity Unit is valid for the specific asset type. Supports optional capacity entries for assets like Fire Risers (FSSD/FSSW) and Fire Alarm Panels (FACP).
+How to Use
+Open the HTML File: Launch https://frillyllama.github.io/QAQC-CHURCH-VALIDATION-TOOL/ in any modern web browser.
+Upload Your File: Drag and drop your CSV export from Ninox onto the designated area, or click to browse and select the file.
+Select Building Type: Choose either "Meetinghouse" or "Welfare" from the dropdown menu. This is critical for the tool to apply the correct set of rules.
+Run the Audit: Click the "Run Internal Audit" button.
+Review the Report: The results will appear below, organized by Work Zone. Each section is collapsible.
+Download Results:
+Download Detailed CSV: Exports a spreadsheet listing every individual error found.
+Download Summary CSV: Exports a high-level summary of error counts by category for each work zone.
+Understanding the Report
+Error Summary: A high-level overview of the number of errors found in each category.
+System Verifications: A checklist of core building systems and their status (Found, Missing, Not Found).
+Error Details: A detailed table listing every error, including the asset number, row number, the field with the error, the invalid data, and the reason it was flagged.
+Changelog - v4.1 (09/12/2025)
+New Feature: Added Condition vs. Age Inconsistency Check using a BOMA-standard EUL map.
+New Feature: Added Refrigerant & In-Service Date Validation to check for phase-out conflicts.
+Enhancement: Upgraded the Model Number Inconsistency Check to be global (dataset-wide) and to use a "majority wins" logic for higher accuracy. The check now covers Manufacturer, Capacity, and Refrigerant.
+Enhancement: Implemented "System Verifications" for Storehouses, which now correctly checks for required welfare facility assets.
+Fix: The internal refrigerant list was expanded to be comprehensive based on ASHRAE standards.
+Fix: Added logic to handle "Other (List in Comments)" as a valid refrigerant entry and verify the associated comment.
+Fix: Updated validation rules to make capacity entry optional for Fire Risers (FSSD/FSSW) and Fire Alarm Panels (FACP).
