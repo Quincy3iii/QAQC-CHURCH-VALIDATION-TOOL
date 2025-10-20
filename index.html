@@ -266,15 +266,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const areasServedLower = areasServed.toLowerCase();
 
         if (areasServedLower === 'other (list in comments)') {
-            if (!commentLower.includes('serves ')) {
-                errors.push({
-                    field: 'att_Validation Comment',
-                    value: validationComment,
-                	reason: 'When Areas Served is "Other", the comment must contain the word "Serves" to describe what the asset serves.',
-                    category: 'Missing Required Data'
-                });
-            }
-        } else if (areasServed && commentLower.includes('serves ')) {
+		    	if (!/\bserves\b/.test(commentLower)) {
+		        errors.push({
+		            field: 'att_Validation Comment',
+	                value: validationComment,
+	                reason: 'When Areas Served is "Other", the comment must contain the word "Serves" to describe what the asset serves.',
+					category: 'Missing Required Data'
+		            });
+		        }
+		    } else if (areasServed && commentLower.includes('serves ')) {
             const synonyms = areaServedSynonyms[areasServed] || [];
             const termsToCheck = [areasServedLower, ...synonyms];
             
