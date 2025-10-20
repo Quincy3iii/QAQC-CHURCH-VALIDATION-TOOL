@@ -275,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         } else if (areasServed && commentLower.includes('serves ')) {
-            // Check for redundancy using synonyms
             const synonyms = areaServedSynonyms[areasServed] || [];
             const termsToCheck = [areasServedLower, ...synonyms];
             
@@ -292,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (!assetNumber) errors.push({ field: 'att_Asset #', value: '(empty)', reason: 'Asset # is a required field.', category: 'Missing Required Data' });
-		// Check for required capacity based on the new rule
         if (assetAcronym && !capacityExemptAcronyms.has(assetAcronym)) {
             const capacityQty = row['att_Capacity Quantity'];
             const capacityUnit = row['att_Capacity Unit'];
@@ -435,7 +433,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Coil validation for AHU, Gas Furnace, and Electric Furnace
         const comment = (row['att_Validation Comment'] || '').toLowerCase();
         
         if (assetAcronym === 'AHU' && !(row['Refrigerant'] || '').trim()) {
@@ -507,7 +504,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
-        // Check for unnecessary parent tags
         if (row['att_Parent Asset Tag'] && !assetsRequiringParent.has(assetAcronym)) {
             errors.push({ 
                 field: 'att_Parent Asset Tag', 
@@ -625,12 +621,10 @@ document.addEventListener('DOMContentLoaded', function() {
             zoneResults.outdoorCount++;
         } else if (splitSystemIndoor.has(acronym)) {
             let isSelfContained = false;
-            // Specifically check AHUs for exclusionary keywords
             if (acronym === 'AHU') {
                 const description = (row['att_Asset Description'] || '').toLowerCase();
                 isSelfContained = Array.from(selfContainedAHUKeywords).some(keyword => description.includes(keyword));
             }
-            // Only increment the indoor count if it's NOT a self-contained unit
             if (!isSelfContained) {
                 zoneResults.indoorCount++;
             }
@@ -667,14 +661,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (systemName.startsWith('Flooring')) {
                 const requiredArea = systemName.includes('Building Envelope') ? 'Building Envelope' : 'Cultural Center';
-                // Check if there is an asset with the right acronym AND the right "Areas Served" value
                 isFound = data.some(row => 
                     acronyms.includes(getAcronym(row['att_Asset #'])) &&
                     row['att_Areas Served'] === requiredArea &&
                     (row['Reason Not Tagged'] || '').trim() !== 'Not Found'
                 );
             } else {
-                // Standard check for all other systems
                 isFound = acronyms.some(a => foundAcronyms.has(a));
             }
 
@@ -752,9 +744,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	function analyzeGlobalInconsistencies(allData) {
 	    const modelStats = new Map();
 	
-	    // First pass: Aggregate data for all models
+	    
 	    allData.forEach(row => {
-	        const model = row['att_Model']; // Kept this as you requested, without .trim()
+	        const model = (row['att_Model'] || '').trim()
 	        
 	        if (model && model !== 'No Nameplate Information Available') {
 	            if (!modelStats.has(model)) {
@@ -762,7 +754,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	            }
 	
 	            const acronym = getAcronym(row['att_Asset #']);
-	            // CHANGE HERE: Trim the manufacturer name before creating the key
 	            const variationKey = JSON.stringify({
 	                type: acronym,
 	                manufacturer: (row['att_Manufacturer'] || '').trim(),
@@ -793,14 +784,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	    }
 	
 	    const globalErrors = [];
-	    // Second pass: Check each row against the established majority rules
 	    allData.forEach((row, index) => {
 	        const model = row['att_Model'];
 	        const rule = modelRules.get(model);
 	
 	        if (rule) {
 	            const acronym = getAcronym(row['att_Asset #']);
-	            // CHANGE HERE: Trim the manufacturer name again for a consistent comparison
 	            const isConsistent = rule.type === acronym &&
 	                                 rule.manufacturer === (row['att_Manufacturer'] || '').trim() &&
 	                                 rule.capacity === row['att_Capacity Quantity'] &&
@@ -808,7 +797,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	            
 	            if (!isConsistent) {
 	                const expected = `Type: ${rule.type}, Man: ${rule.manufacturer}, Cap: ${rule.capacity}, Ref: ${rule.refrigerant || 'N/A'}`;
-	                // CHANGE HERE: Trim the manufacturer name in the error message for clarity
 	                const actual = `Type: ${acronym}, Man: ${(row['att_Manufacturer'] || '').trim()}, Cap: ${row['att_Capacity Quantity']}, Ref: ${row['Refrigerant'] || 'N/A'}`;
 	                globalErrors.push({
 	                    rowNum: index + 2,
@@ -873,9 +861,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 				if (globalErrors.length > 0) {
                     allReportsData['global'] = {
-                        data: [], // No specific data rows for global
+                        data: [], 
                         errors: globalErrors,
-                        analysis: null, // No zone-specific analysis
+                        analysis: null, 
                         templateRowErrors: false
                     };
                 }
@@ -894,7 +882,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateResultsUI(allReports) {
         const reportContent = document.getElementById('report-content');
         reportContent.innerHTML = '';
-		// Handle Global Errors First
         if (allReports['global']) {
             const globalReport = allReports['global'];
             const details = document.createElement('details');
@@ -1096,7 +1083,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let allErrorsForCSV = [];
 	        for (const workZone in allReportsData) {
 	            const report = allReportsData[workZone];
-	            // This forEach loop was missing
 	            report.errors.forEach(error => { 
 	                allErrorsForCSV.push({
 	                    "Work Zone": workZone,
@@ -1183,29 +1169,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 	function copyTableToClipboard(event) {
 	    const button = event.target;
-	    // Find the table within the same report container as the button
 	    const table = button.closest('.p-6').querySelector('.error-table');
 	    if (!table) return;
 	
 	    let data = [];
 	    const headers = [];
-	    // Get headers from the thead
 	    table.querySelectorAll('thead th').forEach(header => headers.push(header.innerText));
 	    data.push(headers.join('\t'));
 	
-	    // Get rows from the tbody
 	    table.querySelectorAll('tbody tr').forEach(row => {
 	        const rowData = [];
 	        row.querySelectorAll('td').forEach(cell => {
-	            // Use innerText to get the visible text content without extra whitespace
 	            rowData.push(cell.innerText.trim());
 	        });
 	        data.push(rowData.join('\t'));
 	    });
 	
-	    // Use the Clipboard API to write the text
 	    navigator.clipboard.writeText(data.join('\n')).then(() => {
-	        // Provide user feedback
 	        const originalText = button.innerHTML;
 	        button.innerHTML = 'Copied!';
 	        button.disabled = true;
