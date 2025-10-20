@@ -750,70 +750,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 	function analyzeGlobalInconsistencies(allData) {
-		const modelStats = new Map();
-		allData.forEach(row => {
-			const model = (row['att_Model'] || '').trim();
-			if (model && model !== 'No Nameplate Information Available') {
-				if (!modelStats.has(model)) {
-					modelStats.set(model, new Map());
-				}
-				const acronym = getAcronym(row['att_Asset #']);
-				const variationKey = JSON.stringify({
-					acronym: acronym, // Now tracking the acronym
-					manufacturer: row['att_Manufacturer'],
-					capacity: row['att_Capacity Quantity'],
-					refrigerant: row['Refrigerant']
-				});
-				const stats = modelStats.get(model);
-				stats.set(variationKey, (stats.get(variationKey) || 0) + 1);
-			}
-		});
-
-		const modelRules = new Map();
-		for (const [model, stats] of modelStats.entries()) {
-			if (stats.size > 1) { // Only check models that have variations
-				let majorityVariationKey = null;
-				let maxCount = 0;
-				for (const [variationKey, count] of stats.entries()) {
-					if (count > maxCount) {
-						maxCount = count;
-						majorityVariationKey = variationKey;
-					}
-				}
-				if (majorityVariationKey) {
-					modelRules.set(model, JSON.parse(majorityVariationKey));
-				}
-			}
-		}
-
-		const globalErrors = [];
-		allData.forEach((row, index) => {
-			const model = row['att_Model'];
-			const rule = modelRules.get(model);
-			if (rule) {
-                const currentAcronym = getAcronym(row['att_Asset #']);
-				const isConsistent = rule.acronym === currentAcronym &&
-                                     rule.manufacturer === row['att_Manufacturer'] &&
-									 rule.capacity === row['att_Capacity Quantity'] &&
-									 rule.refrigerant === row['Refrigerant'];
-				
-				if (!isConsistent) {
-					const expected = `Type: ${rule.acronym}, Man: ${rule.manufacturer}, Cap: ${rule.capacity}, Ref: ${rule.refrigerant || 'N/A'}`;
-					const actual = `Type: ${currentAcronym}, Man: ${row['att_Manufacturer']}, Cap: ${row['att_Capacity Quantity']}, Ref: ${row['Refrigerant'] || 'N/A'}`;
-					globalErrors.push({
-						rowNum: index + 2,
-						assetNum: row['att_Asset #'] || 'N/A',
-						ninoxId: row['Ninox ID'] || 'N/A',
-						workZone: row['WORK ZONE'],
-						field: 'Global Model Inconsistency',
-						value: actual,
-						reason: `Data for model '${model}' is inconsistent with the majority. Expected: ${expected}.`,
-						category: 'Miscellaneous Errors'
-					});
-				}
-			}
-		});
-		return globalErrors;
+	    const modelStats = new Map();
+	
+	    // First pass: Aggregate data for all models
+	    allData.forEach(row => {
+	        const model = row['att_Model']; // Kept this as you requested, without .trim()
+	        
+	        if (model && model !== 'No Nameplate Information Available') {
+	            if (!modelStats.has(model)) {
+	                modelStats.set(model, new Map());
+	            }
+	
+	            const acronym = getAcronym(row['att_Asset #']);
+	            // CHANGE HERE: Trim the manufacturer name before creating the key
+	            const variationKey = JSON.stringify({
+	                type: acronym,
+	                manufacturer: (row['att_Manufacturer'] || '').trim(),
+	                capacity: row['att_Capacity Quantity'],
+	                refrigerant: row['Refrigerant']
+	            });
+	
+	            const stats = modelStats.get(model);
+	            stats.set(variationKey, (stats.get(variationKey) || 0) + 1);
+	        }
+	    });
+	
+	    const modelRules = new Map();
+	    for (const [model, stats] of modelStats.entries()) {
+	        if (stats.size > 1) {
+	            let majorityVariationKey = null;
+	            let maxCount = 0;
+	            for (const [variationKey, count] of stats.entries()) {
+	                if (count > maxCount) {
+	                    maxCount = count;
+	                    majorityVariationKey = variationKey;
+	                }
+	            }
+	            if (majorityVariationKey) {
+	                modelRules.set(model, JSON.parse(majorityVariationKey));
+	            }
+	        }
+	    }
+	
+	    const globalErrors = [];
+	    // Second pass: Check each row against the established majority rules
+	    allData.forEach((row, index) => {
+	        const model = row['att_Model'];
+	        const rule = modelRules.get(model);
+	
+	        if (rule) {
+	            const acronym = getAcronym(row['att_Asset #']);
+	            // CHANGE HERE: Trim the manufacturer name again for a consistent comparison
+	            const isConsistent = rule.type === acronym &&
+	                                 rule.manufacturer === (row['att_Manufacturer'] || '').trim() &&
+	                                 rule.capacity === row['att_Capacity Quantity'] &&
+	                                 rule.refrigerant === row['Refrigerant'];
+	            
+	            if (!isConsistent) {
+	                const expected = `Type: ${rule.type}, Man: ${rule.manufacturer}, Cap: ${rule.capacity}, Ref: ${rule.refrigerant || 'N/A'}`;
+	                // CHANGE HERE: Trim the manufacturer name in the error message for clarity
+	                const actual = `Type: ${acronym}, Man: ${(row['att_Manufacturer'] || '').trim()}, Cap: ${row['att_Capacity Quantity']}, Ref: ${row['Refrigerant'] || 'N/A'}`;
+	                globalErrors.push({
+	                    rowNum: index + 2,
+	                    assetNum: row['att_Asset #'],
+	                    workZone: row['WORK ZONE'],
+	                    field: 'Global Model Inconsistency',
+	                    value: `Model: ${model}`,
+	                    reason: `Data is inconsistent with the majority. Expected: ${expected}. Actual: ${actual}.`,
+	                    category: 'Global Model Inconsistencies',
+	                    ninoxId: row['Ninox ID']
+	                });
+	            }
+	        }
+	    });
+	    return globalErrors;
 	}
     function validateData() {
         if (!fileInput.files.length || !buildingTypeSelect.value) {
