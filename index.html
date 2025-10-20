@@ -109,7 +109,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const validationRules = { 'ACU': { description: ['Split System Indoor Unit'], capacityUnit: ['TON'] }, 'AHU': { description: ['Air Handling Unit', 'Small Capacity Air Handling Unit'], capacityUnit: ['TON', 'BTU'] }, 'BHW': { description: ['Gas Fired Boiler'], capacityUnit: ['BTU'] }, 'BWH': { description: ['Electric Boiler'], capacityUnit: ['BTU'] }, 'CHL': { description: ['Chiller'], capacityUnit: ['TON', 'BTU'] }, 'CTU': { description: ['Cooling Tower'], capacityUnit: [] }, 'CU': { description: ['Air Cooled Condensing Unit', 'Split System Heat Pump'], capacityUnit: ['TON'] }, 'DF': { description: ['Duct Furnace'], capacityUnit: ['BTU'] }, 'EF': { description: ['Electric Furnace'], capacityUnit: ['BTU'] }, 'ERV': { description: ['Energy Recovery Ventilator (ERV)'], capacityUnit: ['CFM'] }, 'F': { description: ['Gas Fired Furnace', 'Hydronic Furnace'], capacityUnit: ['BTU'] }, 'RTU': { description: ['Roof Top Unit', 'Air Conditioning Package Unit'], capacityUnit: ['TON'] }, 'WAC': { description: ['Wall Mounted AC'], capacityUnit: ['TON', 'BTU'] }, 'WSHP': { description: ['Water Source Heat Pump'], capacityUnit: ['TON'] }, 'ASR': { description: ['Asphalt Shingle Roof'], capacityUnit: ['Sq.Ft.'] }, 'BUA': { description: ['Built Up Asphalt/Bitumen Roof'], capacityUnit: ['Sq.Ft.'] }, 'CTR': { description: ['Concrete Tile Roof'], capacityUnit: ['Sq.Ft.'] }, 'MSR': { description: ['Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PVC': { description: ['PVC Roof'], capacityUnit: ['Sq.Ft.'] }, 'SPM': { description: ['Single Ply Membrane Roof'], capacityUnit: ['Sq.Ft.'] }, 'SSM': { description: ['Standing-Seam Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PLA': { description: ['Asphalt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLC': { description: ['Concrete Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLD': { description: ['Dirt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLG': { description: ['Gravel Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'SS': { description: ['Low Voltage Sound System'], capacityUnit: [] }, 'FLC': { description: ['Carpet Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLT': { description: ['Tile Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLV': { description: ['Vinyl Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLCON': { description: ['Concrete Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLW': { description: ['Wood Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FACP': { description: ['Fire Alarm Control Panel'], capacityUnit: ['AMP', 'AMPS', ''] }, 'FSSD': { description: ['Fire Riser (Dry)'], capacityUnit: ['GPM', ''] }, 'FSSW': { description: ['Fire Riser (Wet)', 'Deluge Fire Suppression System (Wet)'], capacityUnit: ['GPM', ''] }, 'FSSC': { description: ['FM-200 Fire Suppression System (Chemical)'], capacityUnit: ['Other (List in Comments)'] }, 'DOCK': { description: ['Dock Plate'], capacityUnit: ['TON'] }, 'RUD': { description: ['Automatic Rollup Door'], capacityUnit: [] }, 'EASD': { description: ['Sliding Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'ESD': { description: ['Swinging Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'IASD': { description: ['Sliding Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'ISD': { description: ['Swinging Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'RD': { description: ['Revolving Door Entrances (Storehouse Only)'], capacityUnit: [] }, 'COOL': { description: ['Reach-In Display Cooler (Storehouse Only)', 'Walk-In Cooler (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRZ': { description: ['Reach-In Display Freezer (Storehouse Only)', 'Walk-In Freezer (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRK': { description: ['Forklift Truck - Electric', 'Forklift Truck - Diesel'], capacityUnit: ['Tons'] }, 'FLB': { description: ['Forklift Battery'], capacityUnit: ['V'] }, 'UH': { description: ['Gas Fired Unit Heater', 'Electric Unit Heater'], capacityUnit: ['BTU'] }, 'DRY': { description: ['Clothes Dryer (Storehouse Only)'], capacityUnit: [] }, 'WSH': { description: ['Washing Machine (Storehouse Only)'], capacityUnit: [] }, 'WDC': { description: ['Washer/Dryer Combo (Storehouse Only)'], capacityUnit: [] }, 'FWC': { description: ['Compactor (Storehouse Only)'], capacityUnit: [] }, 'FWB': { description: ['Baler (Storehouse Only)'], capacityUnit: [] },};
+    const validationRules = { 'ACU': { description: ['Split System Indoor Unit'], capacityUnit: ['TON'] }, 'AHU': { description: ['Air Handling Unit', 'Small Capacity Air Handling Unit'], capacityUnit: ['TON'] }, 'BHW': { description: ['Gas Fired Boiler'], capacityUnit: ['BTU'] }, 'BWH': { description: ['Electric Boiler'], capacityUnit: ['BTU'] }, 'CHL': { description: ['Chiller'], capacityUnit: ['TON', 'BTU'] }, 'CTU': { description: ['Cooling Tower'], capacityUnit: [] }, 'CU': { description: ['Air Cooled Condensing Unit', 'Split System Heat Pump'], capacityUnit: ['TON'] }, 'DF': { description: ['Duct Furnace'], capacityUnit: ['BTU'] }, 'EF': { description: ['Electric Furnace'], capacityUnit: ['BTU'] }, 'ERV': { description: ['Energy Recovery Ventilator (ERV)'], capacityUnit: ['CFM'] }, 'F': { description: ['Gas Fired Furnace', 'Hydronic Furnace'], capacityUnit: ['BTU'] }, 'RTU': { description: ['Roof Top Unit', 'Air Conditioning Package Unit'], capacityUnit: ['TON'] }, 'WAC': { description: ['Wall Mounted AC'], capacityUnit: ['TON', 'BTU'] }, 'WSHP': { description: ['Water Source Heat Pump'], capacityUnit: ['TON'] }, 'ASR': { description: ['Asphalt Shingle Roof'], capacityUnit: ['Sq.Ft.'] }, 'BUA': { description: ['Built Up Asphalt/Bitumen Roof'], capacityUnit: ['Sq.Ft.'] }, 'CTR': { description: ['Concrete Tile Roof'], capacityUnit: ['Sq.Ft.'] }, 'MSR': { description: ['Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PVC': { description: ['PVC Roof'], capacityUnit: ['Sq.Ft.'] }, 'SPM': { description: ['Single Ply Membrane Roof'], capacityUnit: ['Sq.Ft.'] }, 'SSM': { description: ['Standing-Seam Metal Roof'], capacityUnit: ['Sq.Ft.'] }, 'PLA': { description: ['Asphalt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLC': { description: ['Concrete Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLD': { description: ['Dirt Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'PLG': { description: ['Gravel Parking Lot'], capacityUnit: ['Sq.Ft.'] }, 'SS': { description: ['Low Voltage Sound System'], capacityUnit: [] }, 'FLC': { description: ['Carpet Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLT': { description: ['Tile Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLV': { description: ['Vinyl Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLCON': { description: ['Concrete Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FLW': { description: ['Wood Flooring'], capacityUnit: ['Sq.Ft.'] }, 'FACP': { description: ['Fire Alarm Control Panel'], capacityUnit: ['AMP', 'AMPS', ''] }, 'FSSD': { description: ['Fire Riser (Dry)'], capacityUnit: ['GPM', ''] }, 'FSSW': { description: ['Fire Riser (Wet)', 'Deluge Fire Suppression System (Wet)'], capacityUnit: ['GPM', ''] }, 'FSSC': { description: ['FM-200 Fire Suppression System (Chemical)'], capacityUnit: ['Other (List in Comments)'] }, 'DOCK': { description: ['Dock Plate'], capacityUnit: ['TON'] }, 'RUD': { description: ['Automatic Rollup Door'], capacityUnit: [] }, 'EASD': { description: ['Sliding Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'ESD': { description: ['Swinging Automatic or Manual Entrances Exterior (Storehouse Only)'], capacityUnit: [] }, 'IASD': { description: ['Sliding Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'ISD': { description: ['Swinging Automatic or Manual Entrances Interior (Storehouse Only)'], capacityUnit: [] }, 'RD': { description: ['Revolving Door Entrances (Storehouse Only)'], capacityUnit: [] }, 'COOL': { description: ['Reach-In Display Cooler (Storehouse Only)', 'Walk-In Cooler (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRZ': { description: ['Reach-In Display Freezer (Storehouse Only)', 'Walk-In Freezer (Storehouse Only)'], capacityUnit: ['BTU'] }, 'FRK': { description: ['Forklift Truck - Electric', 'Forklift Truck - Diesel'], capacityUnit: ['Other (List In Comments)'] }, 'FLB': { description: ['Forklift Battery'], capacityUnit: ['V'] }, 'UH': { description: ['Gas Fired Unit Heater', 'Electric Unit Heater'], capacityUnit: ['BTU'] }, 'DRY': { description: ['Clothes Dryer (Storehouse Only)'], capacityUnit: [] }, 'WSH': { description: ['Washing Machine (Storehouse Only)'], capacityUnit: [] }, 'WDC': { description: ['Washer/Dryer Combo (Storehouse Only)'], capacityUnit: [] }, 'FWC': { description: ['Compactor (Storehouse Only)'], capacityUnit: [] }, 'FWB': { description: ['Baler (Storehouse Only)'], capacityUnit: [] },};
     const refrigerantDateRules = {
 	    'R-22': {
 	        phaseOutDate: new Date('2010-01-01'), 
@@ -150,14 +150,22 @@ document.addEventListener('DOMContentLoaded', function() {
     'Laundry System': ['WSH', 'DRY', 'WDC'],
     'Compactor': 'FWC',
     'Baler': 'FWB'
-};
+	};
 	const refrigerantNotRequiredAssets = new Set(['Wood Flooring', 'Washing Machine (Storehouse Only)', 'Washer/Dryer Combo (Storehouse Only)', 'Vinyl Flooring', 'Tile Flooring', 'Swinging Automatic or Manual Entrances Interior (Storehouse Only)', 'Swinging Automatic or Manual Entrances Exterior (Storehouse Only)', 'Standing-Seam Metal Roof', 'Sliding Automatic or Manual Entrances Interior (Storehouse Only)', 'Sliding Automatic or Manual Entrances Exterior (Storehouse Only)', 'Single Ply Membrane Roof', 'Revolving Door Entrances (Storehouse Only)', 'PVC Roof', 'Metal Roof', 'Low Voltage Sound System', 'Gravel Parking Lot', 'Gas Fired Unit Heater', 'Gas Fired Furnace', 'Furnace', 'Hydronic Furnace', 'Gas Fired Boiler', 'Fire Suppression Hood', 'FM-200 Fire Suppression System (Chemical)', 'Forklift Battery', 'Fire Riser (Dry)', 'Fire Riser (Wet)', 'Electric Unit Heater', 'Electric Furnace', 'Dock Plate', 'Dirt Parking Lot', 'Deluge Fire Suppression System (Wet)', 'Concrete Tile Roof', 'Concrete Parking Lot', 'Compactor (Storehouse Only)', 'Clothes Dryer (Storehouse Only)', 'Carpet Flooring', 'Built Up Asphalt/Bitumen Roof', 'Baler (Storehouse Only)', 'Automatic Rollup Door', 'Asphalt Shingle Roof', 'Asphalt Parking Lot', 'Fire Alarm Control Panel']);
     const splitSystemIndoor = new Set(['ACU', 'AHU', 'CHL', 'F', 'WSHP']);
     const splitSystemOutdoor = new Set(['CTU', 'CU']);
     const refrigerantKeywords = [  'R-11', 'R-12', 'R-12B1', 'R-13', 'R-13B1', 'R-13I1', 'R-14', 'R-21', 'R-22', 'R-23', 'R-30', 'R-31', 'R-32', 'R-40', 'R-41', 'R-50', 'R-113', 'R-114', 'R-115', 'R-116', 'R-123', 'R-124', 'R-125', 'R-134a', 'R-141b', 'R-142b', 'R-143a', 'R-152a', 'R-170', 'R-E170', 'R-218', 'R-227ea', 'R-236fa', 'R-245fa', 'R-290', 'R-C318', 'R-600', 'R-600a', 'R-601', 'R-601a', 'R-610', 'R-611', 'R-630', 'R-631', 'R-702', 'R-704', 'R-717', 'R-718', 'R-720', 'R-728', 'R-732', 'R-740', 'R-744', 'R-744A', 'R-764', 'R-1130(E)', 'R-1132a', 'R-1132(E)', 'R-1150', 'R-1224yd(Z)', 'R-1233zd(E)', 'R-1234yf', 'R-1234ze(E)', 'R-1270', 'R-1336mzz(E)', 'R-1336mzz(Z)', 'R-400', 'R-401A', 'R-401B', 'R-401C', 'R-402A', 'R-402B', 'R-403A', 'R-403B', 'R-404A', 'R-405A', 'R-406A', 'R-407A', 'R-407B', 'R-407C', 'R-407D', 'R-407E', 'R-407F', 'R-407G', 'R-407H', 'R-407I', 'R-408A', 'R-409A', 'R-409B', 'R-410A', 'R-410B', 'R-411A', 'R-411B', 'R-412A', 'R-413A', 'R-414A', 'R-414B', 'R-415A', 'R-415B', 'R-416A', 'R-417A', 'R-417B', 'R-417C', 'R-418A', 'R-419A', 'R-419B', 'R-420A', 'R-421A', 'R-421B', 'R-422A', 'R-422B', 'R-422C', 'R-422D', 'R-422E', 'R-423A', 'R-424A', 'R-425A', 'R-426A', 'R-427A', 'R-427B', 'R-427C', 'R-428A', 'R-429A', 'R-430A', 'R-431A', 'R-432A', 'R-433A', 'R-433B', 'R-433C', 'R-434A', 'R-435A', 'R-436A', 'R-436B', 'R-436C', 'R-437A', 'R-438A', 'R-439A', 'R-440A', 'R-441A', 'R-442A', 'R-443A', 'R-444A', 'R-444B', 'R-445A', 'R-446A', 'R-447A', 'R-447B', 'R-448A', 'R-448B', 'R-449A', 'R-449B', 'R-449C', 'R-450A', 'R-451A', 'R-451B', 'R-452A', 'R-454B', 'R-454C', 'R-455A', 'R-456A', 'R-457A', 'R-458A', 'R-459A', 'R-459B', 'R-460A', 'R-460B', 'R-460C', 'R-461A', 'R-462A', 'R-463A', 'R-464A', 'R-465A', 'R-500', 'R-501', 'R-502', 'R-503', 'R-504', 'R-505', 'R-506', 'R-507A', 'R-508A', 'R-508B', 'R-509A', 'R-510A', 'R-511A', 'R-512A', 'R-513A', 'R-513B', 'R-514A', 'R-515A', 'R-516A', 'Other (List in Comments)'];
     const refrigerantKeywordsSet = new Set(refrigerantKeywords.map(keyword => keyword.toUpperCase()));
-	const requiredMeetinghouseAcronyms = { 'Sound System (SS)': 'SS', 'Fire Alarm Panel (FACP)': 'FACP', 'Fire Suppression System': ['FSSD', 'FSSW', 'FSSC'], 'Roof System': ['ASR', 'BUA', 'CTR', 'MSR', 'PVC', 'SPM', 'SSM'], 'Parking Lot': ['PLA', 'PLC', 'PLD', 'PLG'], 'Flooring': ['FLC', 'FLT', 'FLV', 'FLW'] };
-
+	const requiredMeetinghouseAcronyms = { 'Sound System (SS)': 'SS', 'Fire Alarm Panel (FACP)': 'FACP', 'Fire Suppression System': ['FSSD', 'FSSW', 'FSSC'], 'Roof System': ['ASR', 'BUA', 'CTR', 'MSR', 'PVC', 'SPM', 'SSM'], 'Parking Lot': ['PLA', 'PLC', 'PLD', 'PLG'], 'Flooring (Building Envelope)': ['FLC'], 'Flooring (Cultural Center)': ['FLC', 'FLV', 'FLW'] };
+	const capacityExemptAcronyms = new Set(['FSSW', 'FSSD', 'SS', 'FACP']);
+	const areaServedSynonyms = {
+        'Place of Worship': ['chapel', 'worship center', 'meeting hall'],
+        'Cultural Center': ['cultural hall', 'multipurpose', 'cc'],
+        'Building Envelope': ['whole building']
+    };
+	const assetsRequiringParent = new Set(['DF', 'FLB']);
+	const selfContainedAHUKeywords = new Set(['package', 'make up air unit', 'roof top']);
+	
     function getAcronym(assetNumber) {
         if (!assetNumber) return '';
         return (assetNumber.split('-')[0] || '').trim();
@@ -166,6 +174,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateRow(row, buildingType, zoneData) {
         const errors = [];
         const assetNumber = row['att_Asset #'] || '';
+		        if (assetNumber && !assetNumber.startsWith('TEMPLATE') && !/^[A-Z]{1,5}-\d/.test(assetNumber)) {
+            errors.push({ 
+                field: 'att_Asset #', 
+                value: assetNumber, 
+                reason: 'Asset # format is invalid. It must consist of an acronym followed by a dash and a number (e.g., FACP-1).', 
+                category: 'Formatting & Syntax Errors' 
+            });
+        }
         const assetDescription = row['att_Asset Description'] || '';
         const capacityUnit = row['att_Capacity Unit'];
         const assetAcronym = getAcronym(assetNumber);
@@ -221,6 +237,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (cardinalAbbreviations.test(roomName)) {
                 errors.push({ field: 'att_Room', value: roomName, reason: 'Use full cardinal directions (e.g., "Southwest" instead of "SW").', category: 'Formatting & Syntax Errors' });
             }
+            const compoundCardinals = {
+                'south west': 'Southwest', 'south east': 'Southeast',
+                'north west': 'Northwest', 'north east': 'Northeast'
+            };
+            const roomNameLower = roomName.toLowerCase();
+            for (const [incorrect, correct] of Object.entries(compoundCardinals)) {
+                if (roomNameLower.includes(incorrect)) {
+                    errors.push({ 
+                        field: 'att_Room', 
+                        value: roomName, 
+                        reason: `Use the compound word "${correct}" instead of the two-word version.`, 
+                        category: 'Formatting & Syntax Errors' 
+                    });
+                }
+            }
             const possessives = { "Bishops": "Bishop's", "Clerks": "Clerk's", "Presidents": "President's", "Mothers": "Mother's", "Members": "Member's" };
             for (const [wrong, right] of Object.entries(possessives)) {
                 if (roomName.includes(wrong)) {
@@ -229,14 +260,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        const validationComment = (row['att_Validation Comment'] || '').toLowerCase();
-        const areasServed = (row['att_Areas Served'] || '').toLowerCase();
-        if (validationComment.includes(`serves ${areasServed}`) && areasServed && !areasServed.includes('classroom')) {
-            errors.push({ field: 'att_Validation Comment', value: row['att_Validation Comment'], reason: 'Redundant comment. Information is already in "Areas Served".', category: 'Formatting & Syntax Errors' });
+        const validationComment = (row['att_Validation Comment'] || '');
+        const areasServed = (row['att_Areas Served'] || '');
+        const commentLower = validationComment.toLowerCase();
+        const areasServedLower = areasServed.toLowerCase();
+
+        if (areasServedLower === 'other (list in comments)') {
+            if (!commentLower.includes('serves ')) {
+                errors.push({
+                    field: 'att_Validation Comment',
+                    value: validationComment,
+                	reason: 'When Areas Served is "Other", the comment must contain the word "Serves" to describe what the asset serves.',
+                    category: 'Missing Required Data'
+                });
+            }
+        } else if (areasServed && commentLower.includes('serves ')) {
+            // Check for redundancy using synonyms
+            const synonyms = areaServedSynonyms[areasServed] || [];
+            const termsToCheck = [areasServedLower, ...synonyms];
+            
+            const isRedundant = termsToCheck.some(term => commentLower.includes(term));
+
+            if (isRedundant) {
+                errors.push({
+                    field: 'att_Validation Comment',
+                    value: validationComment,
+                    reason: 'Redundant comment. The "Areas Served" field already specifies this. Use comments for additional details only.',
+                    category: 'Formatting & Syntax Errors'
+                });
+            }
         }
         
         if (!assetNumber) errors.push({ field: 'att_Asset #', value: '(empty)', reason: 'Asset # is a required field.', category: 'Missing Required Data' });
-        
+		// Check for required capacity based on the new rule
+        if (assetAcronym && !capacityExemptAcronyms.has(assetAcronym)) {
+            const capacityQty = row['att_Capacity Quantity'];
+            const capacityUnit = row['att_Capacity Unit'];
+            if (!capacityQty || String(capacityQty).trim() === '') {
+                errors.push({ field: 'att_Capacity Quantity', value: '(empty)', reason: 'Capacity Quantity is required for this asset type.', category: 'Missing Required Data' });
+            }
+            if (!capacityUnit || String(capacityUnit).trim() === '') {
+                errors.push({ field: 'att_Capacity Unit', value: '(empty)', reason: 'Capacity Unit is required for this asset type.', category: 'Missing Required Data' });
+            }
+        }
         if (!isTagOnPM) {
             const inServiceDate = row['att_In-Service Date'];
             if (!inServiceDate || String(inServiceDate).trim() === '' || isNaN(new Date(inServiceDate).getTime())) {
@@ -280,11 +346,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (spaceFloor === 'Attic' && environment !== 'Wide variation in temp/humidity/dust') {
             errors.push({ field: 'Environment', value: environment, reason: 'For Attic space, Environment must be "Wide variation in temp/humidity/dust".', category: 'Miscellaneous Errors' });
         }
+		if (spaceFloor === 'Mezzanine' && environment !== 'Wide variation in temp/humidity/dust') {
+            errors.push({ field: 'Environment', value: environment, reason: 'For Mezzanine space, Environment must be "Wide variation in temp/humidity/dust".', category: 'Miscellaneous Errors' });
+        }
         if (spaceFloor === 'Roof' && environment !== 'Extremes of temperature') {
             errors.push({ field: 'Environment', value: environment, reason: 'For Roof space, Environment must be "Extremes of temperature".', category: 'Miscellaneous Errors' });
         }
         if (spaceFloor === 'Building Exterior' && environment !== 'Extremes of temperature') {
             errors.push({ field: 'Environment', value: environment, reason: 'For Building Exterior space, Environment must be "Extremes of temperature".', category: 'Miscellaneous Errors' });
+        }
+		if (spaceFloor === 'Basement' && environment !== 'Liable to extreme dust or flooding') {
+            errors.push({ field: 'Environment', value: environment, reason: 'For Basement space, Environment must be "Liable to extreme dust or flooding".', category: 'Miscellaneous Errors' });
         }
         
         const capacityQty = row['att_Capacity Quantity'];
@@ -363,15 +435,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        if (assetDescription === 'Gas Fired Furnace') {
-            const comment = (row['att_Validation Comment'] || '').toLowerCase();
-            const hasCoilAndRefrigerant = comment.includes('coil') && refrigerantKeywords.some(r => comment.toUpperCase().includes(r));
+        // Coil validation for AHU, Gas Furnace, and Electric Furnace
+        const comment = (row['att_Validation Comment'] || '').toLowerCase();
+        
+        if (assetAcronym === 'AHU' && !(row['Refrigerant'] || '').trim()) {
+            if (!comment.includes('no cooling coil')) {
+                 errors.push({ 
+                    field: 'att_Validation Comment', 
+                    value: row['att_Validation Comment'], 
+                    reason: 'AHU has no refrigerant listed. Comment must state "No cooling coil." to confirm.', 
+                    category: 'Missing Required Data' 
+                });
+            }
+        }
+        
+        if (assetAcronym === 'F' || assetAcronym === 'EF') {
+            const hasCoilAndRefrigerant = comment.includes('coil') && refrigerantKeywords.some(r => comment.toUpperCase().includes(r.toUpperCase()));
             const hasNoCoilMessage = comment.includes('no coil attached.');
+
             if (!hasCoilAndRefrigerant && !hasNoCoilMessage) {
                 errors.push({ 
                     field: 'att_Validation Comment', 
                     value: row['att_Validation Comment'], 
-                    reason: 'Gas Furnace comment must either state "No coil attached." or mention "Coil" and a refrigerant type.', 
+                    reason: `${assetDescription} comment must either state "No coil attached." or mention "Coil" and a refrigerant type.`, 
                     category: 'Missing Required Data' 
                 });
             }
@@ -421,7 +507,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
-        
+        // Check for unnecessary parent tags
+        if (row['att_Parent Asset Tag'] && !assetsRequiringParent.has(assetAcronym)) {
+            errors.push({ 
+                field: 'att_Parent Asset Tag', 
+                value: row['att_Parent Asset Tag'], 
+                reason: `This asset type ('${assetAcronym}') should not have a parent asset.`, 
+                category: 'Miscellaneous Errors' 
+            });
+        }
         if (assetAcronym === 'DF') {
             const parentTag = row['att_Parent Asset Tag'] || '';
             if (!parentTag) {
@@ -439,10 +533,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        if (assetAcronym === 'FLB' && !(row['att_Parent Asset Tag'] || '').includes('FRK')) {
-            errors.push({ field: 'att_Parent Asset Tag', value: row['att_Parent Asset Tag'], reason: 'Forklift Battery (FLB) must have a Forklift (FRK) as its parent.', category: 'Missing Required Data' });
+        if (assetAcronym === 'FLB') {
+            const parentTag = row['att_Parent Asset Tag'] || '';
+            if (!parentTag) {
+                errors.push({ field: 'att_Parent Asset Tag', value: '(empty)', reason: 'Forklift Battery (FLB) must have a parent asset.', category: 'Missing Required Data' });
+            } else {
+                const parentAsset = zoneData.find(asset => asset['TagID'] === parentTag);
+                if (!parentAsset) {
+                    errors.push({ field: 'att_Parent Asset Tag', value: parentTag, reason: `Parent asset with TagID '${parentTag}' not found in this work zone.`, category: 'Miscellaneous Errors' });
+                } else {
+                    const parentAcronym = getAcronym(parentAsset['att_Asset #']);
+                    if (parentAcronym !== 'FRK') {
+                        errors.push({ field: 'att_Parent Asset Tag', value: parentTag, reason: `Parent asset must be a Forklift (FRK), but found '${parentAcronym}'.`, category: 'Miscellaneous Errors' });
+                    }
+                }
+            }
         }
-
+        if (assetAcronym === 'FRK') {
+            const capacityUnit = row['att_Capacity Unit'] || '';
+            const validationComment = (row['att_Validation Comment'] || '').toLowerCase();
+            
+            if (capacityUnit === 'Other (List In Comments)') {
+                if (!validationComment.includes('pounds') && !validationComment.includes('lbs')) {
+                    errors.push({
+                        field: 'att_Validation Comment',
+                        value: row['att_Validation Comment'],
+                        reason: 'Capacity is "Other". The comment must specify the capacity in pounds or LBS.',
+                        category: 'Missing Required Data'
+                    });
+                }
+            }
+        }
         return errors;
     }
 
@@ -452,14 +573,19 @@ document.addEventListener('DOMContentLoaded', function() {
             systemStatus: {},
             indoorCount: 0,
             outdoorCount: 0,
-            primarySurveyors: 'N/A'
+            primarySurveyors: 'N/A',
+			notFoundAssets: []
         };
 
         const assetNumbers = new Set();
         const foundDuplicates = new Set();
         const modelStats = new Map();
         data.forEach(row => {
-            const model = row['att_Model'];
+			const isNotFoundPlaceholder = (row['Reason Not Tagged'] || '').trim() === 'Not Found' && !row['TagID'];
+        	if (isNotFoundPlaceholder) {
+            	zoneResults.notFoundAssets.push(row['att_Asset #'] || 'Unknown Asset');
+        	}
+            const model = (row['att_Model'] || '').trim();
             if (model && model !== 'No Nameplate Information Available') {
                 if (!modelStats.has(model)) modelStats.set(model, new Map());
                 
@@ -495,8 +621,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 assetNumbers.add(assetNum);
             }
-            if (splitSystemIndoor.has(acronym)) zoneResults.indoorCount++;
-            if (splitSystemOutdoor.has(acronym)) zoneResults.outdoorCount++;
+        if (splitSystemOutdoor.has(acronym)) {
+            zoneResults.outdoorCount++;
+        } else if (splitSystemIndoor.has(acronym)) {
+            let isSelfContained = false;
+            // Specifically check AHUs for exclusionary keywords
+            if (acronym === 'AHU') {
+                const description = (row['att_Asset Description'] || '').toLowerCase();
+                isSelfContained = Array.from(selfContainedAHUKeywords).some(keyword => description.includes(keyword));
+            }
+            // Only increment the indoor count if it's NOT a self-contained unit
+            if (!isSelfContained) {
+                zoneResults.indoorCount++;
+            }
+        }
             const model = row['att_Model'];
             const rule = modelRules.get(model);
             if (rule) {
@@ -522,14 +660,38 @@ document.addEventListener('DOMContentLoaded', function() {
         if (requiredSystems) {
             const foundAcronyms = new Set(data.map(a => getAcronym(a['att_Asset #'])));
             const notFoundAssets = new Set(data.filter(a => (a['Reason Not Tagged'] || '').trim() === 'Not Found').map(a => getAcronym(a['att_Asset #'])));
-            for (const systemName in requiredSystems) {
-                const acronyms = Array.isArray(requiredSystems[systemName]) ? requiredSystems[systemName] : [requiredSystems[systemName]];
-                const isFound = acronyms.some(a => foundAcronyms.has(a));
-                const isDocumentedNotFound = acronyms.some(a => notFoundAssets.has(a));
-                if (isFound && !isDocumentedNotFound) zoneResults.systemStatus[systemName] = 'Found';
-                else if (isDocumentedNotFound) zoneResults.systemStatus[systemName] = 'Not Found';
-                else zoneResults.systemStatus[systemName] = 'Missing';
+        for (const systemName in requiredSystems) {
+            const acronyms = Array.isArray(requiredSystems[systemName]) ? requiredSystems[systemName] : [requiredSystems[systemName]];
+            let isFound = false;
+            const isDocumentedNotFound = acronyms.some(a => notFoundAssets.has(a));
+
+            if (systemName.startsWith('Flooring')) {
+                const requiredArea = systemName.includes('Building Envelope') ? 'Building Envelope' : 'Cultural Center';
+                // Check if there is an asset with the right acronym AND the right "Areas Served" value
+                isFound = data.some(row => 
+                    acronyms.includes(getAcronym(row['att_Asset #'])) &&
+                    row['att_Areas Served'] === requiredArea &&
+                    (row['Reason Not Tagged'] || '').trim() !== 'Not Found'
+                );
+            } else {
+                // Standard check for all other systems
+                isFound = acronyms.some(a => foundAcronyms.has(a));
             }
+
+            if (isFound && !isDocumentedNotFound) {
+                zoneResults.systemStatus[systemName] = 'Found';
+            } else if (isDocumentedNotFound) {
+                zoneResults.systemStatus[systemName] = 'Not Found';
+            } else {
+                zoneResults.systemStatus[systemName] = 'Missing';
+                zoneResults.errors.push({
+                    assetNum: 'Work Zone-wide',
+                    reason: `Required system '${systemName}' is missing from the work zone.`,
+                    category: 'System Verifications',
+                    field: 'System Verification'
+                });
+            }
+        }
         }
         const surveyorCounts = data.reduce((acc, row) => {
             const creator = row['Created by'];
@@ -539,6 +701,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (Object.keys(surveyorCounts).length) {
             zoneResults.primarySurveyors = Object.keys(surveyorCounts).join(', ');
         }
+	    const hvacMatch = zoneResults.indoorCount === zoneResults.outdoorCount;
+	    if (!hvacMatch) {
+	        zoneResults.errors.push({
+	            assetNum: 'Work Zone-wide',
+	            reason: `HVAC split system count mismatch. Indoor: ${zoneResults.indoorCount}, Outdoor: ${zoneResults.outdoorCount}.`,
+	            category: 'System Verifications',
+	            field: 'HVAC Count'
+	        });
+	    }
+		
         return zoneResults;
     }
     const dropZone = document.getElementById('drop-zone');
@@ -575,12 +747,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	function analyzeGlobalInconsistencies(allData) {
 		const modelStats = new Map();
 		allData.forEach(row => {
-			const model = row['att_Model'];
+			const model = (row['att_Model'] || '').trim();
 			if (model && model !== 'No Nameplate Information Available') {
 				if (!modelStats.has(model)) {
 					modelStats.set(model, new Map());
 				}
+				const acronym = getAcronym(row['att_Asset #']);
 				const variationKey = JSON.stringify({
+					acronym: acronym, // Now tracking the acronym
 					manufacturer: row['att_Manufacturer'],
 					capacity: row['att_Capacity Quantity'],
 					refrigerant: row['Refrigerant']
@@ -589,9 +763,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				stats.set(variationKey, (stats.get(variationKey) || 0) + 1);
 			}
 		});
+
 		const modelRules = new Map();
 		for (const [model, stats] of modelStats.entries()) {
-			if (stats.size > 1) {
+			if (stats.size > 1) { // Only check models that have variations
 				let majorityVariationKey = null;
 				let maxCount = 0;
 				for (const [variationKey, count] of stats.entries()) {
@@ -605,25 +780,29 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 		}
+
 		const globalErrors = [];
 		allData.forEach((row, index) => {
 			const model = row['att_Model'];
 			const rule = modelRules.get(model);
 			if (rule) {
-				const isConsistent = rule.manufacturer === row['att_Manufacturer'] &&
+                const currentAcronym = getAcronym(row['att_Asset #']);
+				const isConsistent = rule.acronym === currentAcronym &&
+                                     rule.manufacturer === row['att_Manufacturer'] &&
 									 rule.capacity === row['att_Capacity Quantity'] &&
 									 rule.refrigerant === row['Refrigerant'];
 				
 				if (!isConsistent) {
-					const expected = `Man: ${rule.manufacturer}, Cap: ${rule.capacity}, Ref: ${rule.refrigerant || 'N/A'}`;
-					const actual = `Man: ${row['att_Manufacturer']}, Cap: ${row['att_Capacity Quantity']}, Ref: ${row['Refrigerant'] || 'N/A'}`;
+					const expected = `Type: ${rule.acronym}, Man: ${rule.manufacturer}, Cap: ${rule.capacity}, Ref: ${rule.refrigerant || 'N/A'}`;
+					const actual = `Type: ${currentAcronym}, Man: ${row['att_Manufacturer']}, Cap: ${row['att_Capacity Quantity']}, Ref: ${row['Refrigerant'] || 'N/A'}`;
 					globalErrors.push({
 						rowNum: index + 2,
-						assetNum: `Model: ${model}`,
+						assetNum: row['att_Asset #'] || 'N/A',
+						ninoxId: row['Ninox ID'] || 'N/A',
 						workZone: row['WORK ZONE'],
 						field: 'Global Model Inconsistency',
 						value: actual,
-						reason: `Data is inconsistent with the majority rule for this model. Expected: ${expected}.`,
+						reason: `Data for model '${model}' is inconsistent with the majority. Expected: ${expected}.`,
 						category: 'Miscellaneous Errors'
 					});
 				}
@@ -659,9 +838,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					const zoneData = workZoneGroups[workZone];
 					let allErrors = [];
 					const zoneAnalysis = analyzeWorkZoneData(zoneData, buildingType);
-					if (workZone === Object.keys(workZoneGroups)[0]) {
-						 allErrors.push(...globalErrors.map(err => ({ ...err, ninoxId: 'N/A' })));
-					}
 					zoneAnalysis.errors.forEach(err => allErrors.push({ ...err, rowNum: 'Work Zone-wide', assetNum: err.assetNum, workZone: workZone, ninoxId: 'N/A' }));
                         zoneData.forEach((row, index) => {
                             const rowErrors = validateRow(row, buildingType, zoneData);
@@ -680,6 +856,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             templateRowErrors: templateRowErrors
                         };
                 }
+				if (globalErrors.length > 0) {
+                    allReportsData['global'] = {
+                        data: [], // No specific data rows for global
+                        errors: globalErrors,
+                        analysis: null, // No zone-specific analysis
+                        templateRowErrors: false
+                    };
+                }
                 updateResultsUI(allReportsData);
                 validateBtn.disabled = false;
                 validateBtn.innerHTML = 'Run Internal Audit';
@@ -695,7 +879,60 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateResultsUI(allReports) {
         const reportContent = document.getElementById('report-content');
         reportContent.innerHTML = '';
+		// Handle Global Errors First
+        if (allReports['global']) {
+            const globalReport = allReports['global'];
+            const details = document.createElement('details');
+            details.className = 'bg-white rounded-lg shadow-md border border-red-300 mb-6';
+            details.open = true;
+
+            const summary = document.createElement('summary');
+            summary.className = 'p-4 cursor-pointer font-bold text-lg text-red-700 flex justify-between items-center';
+            summary.innerHTML = `<span>Global Model Inconsistencies (${globalReport.errors.length} found)</span><svg class="w-5 h-5 details-marker" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+            
+            const globalReportContainer = document.createElement('div');
+            globalReportContainer.className = 'p-6 border-t';
+            
+            const tableContainer = document.createElement('div');
+            tableContainer.className = 'table-container overflow-x-auto';
+            
+            const table = document.createElement('table');
+            table.className = 'min-w-full divide-y divide-slate-200';
+            table.innerHTML = `
+                <thead class="bg-slate-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Work Zone</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Ninox ID</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Asset #</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Row</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Invalid Value</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Reason for Error</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-slate-200"></tbody>
+            `;
+            
+            const errorBody = table.querySelector('tbody');
+            globalReport.errors.forEach(error => {
+                const tr = errorBody.insertRow();
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">${error.workZone || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">${error.ninoxId || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">${error.assetNum || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">${error.rowNum}</td>
+                    <td class="px-6 py-4 text-sm text-slate-700"><div class="truncate max-w-xs" title="${String(error.value || '')}">${String(error.value || 'N/A')}</div></td>
+                    <td class="px-6 py-4 text-sm text-red-600">${error.reason}</td>
+                `;
+            });
+
+            tableContainer.appendChild(table);
+            globalReportContainer.appendChild(tableContainer);
+            details.appendChild(summary);
+            details.appendChild(globalReportContainer);
+            reportContent.appendChild(details);
+        }
         for (const workZone in allReports) {
+			if (workZone === 'global') continue;
             const report = allReports[workZone];
             const { data, errors, analysis, templateRowErrors } = report;
             const details = document.createElement('details');
@@ -718,7 +955,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="p-6 border-t mt-6">
-                        <h3 class="text-lg font-semibold text-slate-800 mb-4">Error Details</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-slate-800">Error Details</h3>
+                            <button onclick="copyTableToClipboard('${workZone}', this)" class="bg-slate-100 text-slate-600 font-semibold py-1 px-3 rounded-md text-xs hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Copy Table
+                            </button>
+                        </div>
                         <div class="table-container overflow-x-auto">
                             <table class="min-w-full divide-y divide-slate-200 error-table">
                                 <thead class="bg-slate-50">
@@ -763,10 +1005,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (category === 'Template Rows to Delete' && errorCounts[category] === 0) continue;
                 errorSummaryList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">${category}</p><span class="font-bold text-slate-800 bg-slate-200 rounded-full px-2 py-0.5">${errorCounts[category]}</span></div>`;
             }
-            systemVerificationsList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">Primary Surveyor(s)</p><span class="font-semibold text-slate-800">${analysis.primarySurveyors}</span></div>`;
-            const hvacMatch = analysis.indoorCount === analysis.outdoorCount;
-            systemVerificationsList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">HVAC Split System Counts</p><span class="font-semibold ${hvacMatch ? 'text-green-600' : 'text-red-600'}">Indoor: ${analysis.indoorCount} – Outdoor: ${analysis.outdoorCount} ${hvacMatch ? '✅' : '❌'}</span></div>`;
-            for (const systemName in analysis.systemStatus) {
+			for (const systemName in analysis.systemStatus) {
                 let statusText;
                 let statusColor;
                 if (analysis.systemStatus[systemName] === 'Found') {
@@ -780,6 +1019,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     statusColor = 'text-red-600 font-bold';
                 }
                 systemVerificationsList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">${systemName}</p><span class="font-semibold ${statusColor}">${statusText}</span></div>`;
+            }
+				if (analysis.notFoundAssets && analysis.notFoundAssets.length > 0) {
+                const notFoundSection = document.createElement('div');
+                notFoundSection.className = 'mt-8';
+
+                const title = document.createElement('h3');
+                title.className = 'text-lg font-semibold text-slate-800 mb-4';
+                title.textContent = 'Documented "Not Found" Assets';
+                notFoundSection.appendChild(title);
+
+                const listContainer = document.createElement('div');
+                listContainer.className = 'bg-slate-50 border border-slate-200 rounded-md p-4';
+                
+                const listHTML = analysis.notFoundAssets.map(assetNum => 
+                    `<li class="text-sm text-slate-700">${assetNum}</li>`
+                ).join('');
+
+                listContainer.innerHTML = `<ul class="list-disc list-inside space-y-1">${listHTML}</ul>`;
+                notFoundSection.appendChild(listContainer);
+                
+                const errorDetailsContainer = zoneReportContainer.querySelector('.p-6.border-t.mt-6');
+                zoneReportContainer.insertBefore(notFoundSection, errorDetailsContainer);
+            }
+            systemVerificationsList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">Primary Surveyor(s)</p><span class="font-semibold text-slate-800">${analysis.primarySurveyors}</span></div>`;
+            const hvacMatch = analysis.indoorCount === analysis.outdoorCount;
+            systemVerificationsList.innerHTML += `<div class="flex justify-between items-center text-sm"><p class="text-slate-600">HVAC Split System Counts</p><span class="font-semibold ${hvacMatch ? 'text-green-600' : 'text-red-600'}">Indoor: ${analysis.indoorCount} – Outdoor: ${analysis.outdoorCount} ${hvacMatch ? '✅' : '❌'}</span></div>`;
+            if (!hvacMatch) {
+                systemVerificationsList.innerHTML += `<div class="text-xs text-amber-700 pl-2 mt-1">- Recommendation: Verify Indoor/Outdoor HVAC matching configuration in this work zone.</div>`;
             }
             if (errors.length > 0) {
                 errors.forEach(error => {
@@ -812,20 +1079,22 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const originalFileName = fileInput.files[0] ? fileInput.files[0].name.replace('.csv', '') : 'Asset_Report';
             let allErrorsForCSV = [];
-            for (const workZone in allReportsData) {
-                const report = allReportsData[workZone];
-                report.errors.forEach(error => {
-                    allErrorsForCSV.push({
-                        "Work Zone": workZone,
-                        "Ninox ID": error.ninoxId || 'N/A',
-                        "Asset #": error.assetNum || 'N/A',
-                        "Row #": error.rowNum,
-                        "Field with Error": error.field || 'Work Zone-wide',
-                        "Invalid Value": String(error.value || 'N/A'),
-                        "Reason for Error": error.reason
-                    });
-                });
-            }
+	        for (const workZone in allReportsData) {
+	            const report = allReportsData[workZone];
+	            // This forEach loop was missing
+	            report.errors.forEach(error => { 
+	                allErrorsForCSV.push({
+	                    "Work Zone": workZone,
+	                    "Ninox ID": error.ninoxId || 'N/A',
+	                    "Asset #": error.assetNum || 'N/A',
+	                    "Error Category": error.category,
+	                    "Row #": error.rowNum,
+	                    "Field with Error": error.field || 'Work Zone-wide',
+	                    "Invalid Value": String(error.value || 'N/A'),
+	                    "Reason for Error": error.reason
+	                });
+	            });
+	        }
             if (allErrorsForCSV.length === 0) {
                 console.log("No errors to report!");
                 return;
@@ -896,6 +1165,57 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error("Error generating Summary CSV:", error);
         }
+    }
+	function copyTableToClipboard(workZone, buttonElement) {
+        const report = allReportsData[workZone];
+        if (!report || !report.errors || report.errors.length === 0) {
+            console.log("No errors to copy for work zone:", workZone);
+            return;
+        }
+
+        // Define headers, matching the detailed CSV download
+        const headers = [
+            "Work Zone",
+            "Ninox ID",
+            "Asset #",
+            "Error Category",
+            "Row #",
+            "Field with Error",
+            "Invalid Value",
+            "Reason for Error"
+        ];
+        let tsvContent = headers.join('\t') + '\n'; // Use tabs for spreadsheet compatibility
+
+        // Map errors to TSV (Tab-Separated Values) format
+        report.errors.forEach(error => {
+            // Filter out any template-related errors from the copy
+            if (error.category === 'Template Rows to Delete') return;
+
+            const rowData = [
+                workZone,
+                error.ninoxId || 'N/A',
+                error.assetNum || 'N/A',
+                error.category || 'Miscellaneous Errors',
+                error.rowNum,
+                error.field || 'Work Zone-wide',
+                String(error.value || 'N/A').replace(/\s+/g, ' '), // Clean up whitespace
+                error.reason.replace(/\s+/g, ' ') // Clean up whitespace
+            ];
+            tsvContent += rowData.join('\t') + '\n';
+        });
+
+        navigator.clipboard.writeText(tsvContent).then(() => {
+            const originalText = buttonElement.innerHTML;
+            buttonElement.innerHTML = 'Copied! ✅';
+            buttonElement.disabled = true;
+            setTimeout(() => {
+                buttonElement.innerHTML = originalText;
+                buttonElement.disabled = false;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            alert('Failed to copy table. See console for details.');
+        });
     }
 });
 </script>
