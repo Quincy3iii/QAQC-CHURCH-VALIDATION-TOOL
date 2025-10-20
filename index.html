@@ -731,6 +731,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, () => dropZone.classList.remove('drag-over'), false));
     dropZone.addEventListener('drop', handleDrop, false);
     validateBtn.addEventListener('click', validateData);
+	document.getElementById('report-content').addEventListener('click', function(event) {
+    if (event.target.classList.contains('copy-table-btn')) {
+        copyTableToClipboard(event);
+	    }
+	});
     downloadCsvBtn.addEventListener('click', downloadCSV);
     downloadSummaryBtn.addEventListener('click', downloadSummaryCSV);
     function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
@@ -955,12 +960,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="p-6 border-t mt-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-semibold text-slate-800">Error Details</h3>
-                            <button onclick="copyTableToClipboard('${workZone}', this)" class="bg-slate-100 text-slate-600 font-semibold py-1 px-3 rounded-md text-xs hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Copy Table
-                            </button>
-                        </div>
+						<div class="flex justify-between items-center mb-4">
+						    <h3 class="text-lg font-semibold text-slate-800">Error Details</h3>
+						    <button class="copy-table-btn bg-gray-200 text-gray-700 font-bold py-1 px-3 rounded text-xs hover:bg-gray-300">
+						        Copy Table
+						    </button>
+						</div>
                         <div class="table-container overflow-x-auto">
                             <table class="min-w-full divide-y divide-slate-200 error-table">
                                 <thead class="bg-slate-50">
@@ -1166,57 +1171,43 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Error generating Summary CSV:", error);
         }
     }
-	function copyTableToClipboard(workZone, buttonElement) {
-        const report = allReportsData[workZone];
-        if (!report || !report.errors || report.errors.length === 0) {
-            console.log("No errors to copy for work zone:", workZone);
-            return;
-        }
-
-        // Define headers, matching the detailed CSV download
-        const headers = [
-            "Work Zone",
-            "Ninox ID",
-            "Asset #",
-            "Error Category",
-            "Row #",
-            "Field with Error",
-            "Invalid Value",
-            "Reason for Error"
-        ];
-        let tsvContent = headers.join('\t') + '\n'; // Use tabs for spreadsheet compatibility
-
-        // Map errors to TSV (Tab-Separated Values) format
-        report.errors.forEach(error => {
-            // Filter out any template-related errors from the copy
-            if (error.category === 'Template Rows to Delete') return;
-
-            const rowData = [
-                workZone,
-                error.ninoxId || 'N/A',
-                error.assetNum || 'N/A',
-                error.category || 'Miscellaneous Errors',
-                error.rowNum,
-                error.field || 'Work Zone-wide',
-                String(error.value || 'N/A').replace(/\s+/g, ' '), // Clean up whitespace
-                error.reason.replace(/\s+/g, ' ') // Clean up whitespace
-            ];
-            tsvContent += rowData.join('\t') + '\n';
-        });
-
-        navigator.clipboard.writeText(tsvContent).then(() => {
-            const originalText = buttonElement.innerHTML;
-            buttonElement.innerHTML = 'Copied! ✅';
-            buttonElement.disabled = true;
-            setTimeout(() => {
-                buttonElement.innerHTML = originalText;
-                buttonElement.disabled = false;
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-            alert('Failed to copy table. See console for details.');
-        });
-    }
+	function copyTableToClipboard(event) {
+	    const button = event.target;
+	    // Find the table within the same report container as the button
+	    const table = button.closest('.p-6').querySelector('.error-table');
+	    if (!table) return;
+	
+	    let data = [];
+	    const headers = [];
+	    // Get headers from the thead
+	    table.querySelectorAll('thead th').forEach(header => headers.push(header.innerText));
+	    data.push(headers.join('\t'));
+	
+	    // Get rows from the tbody
+	    table.querySelectorAll('tbody tr').forEach(row => {
+	        const rowData = [];
+	        row.querySelectorAll('td').forEach(cell => {
+	            // Use innerText to get the visible text content without extra whitespace
+	            rowData.push(cell.innerText.trim());
+	        });
+	        data.push(rowData.join('\t'));
+	    });
+	
+	    // Use the Clipboard API to write the text
+	    navigator.clipboard.writeText(data.join('\n')).then(() => {
+	        // Provide user feedback
+	        const originalText = button.innerHTML;
+	        button.innerHTML = 'Copied!';
+	        button.disabled = true;
+	        setTimeout(() => {
+	            button.innerHTML = originalText;
+	            button.disabled = false;
+	        }, 2000);
+	    }).catch(err => {
+	        console.error('Failed to copy table: ', err);
+	        alert('Could not copy the table. Please check the browser console for errors.');
+	    });
+	}
 });
 </script>
 
