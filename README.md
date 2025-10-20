@@ -96,6 +96,51 @@ The tool performs a wide array of checks, categorized for clarity.
 
 * **Fix:** The internal refrigerant list was expanded to be **comprehensive based on ASHRAE standards**.
 
+Asset Data QA/QC Analyst: Version 4.1.1 Change Log (2025-10-20)
+This update introduces significant enhancements to the validation logic, improves data consistency checks across large datasets, and refines the user interface for a clearer, more actionable audit report.
+🚀 New Features & Rule Enhancements
+1. Global Model Inconsistency Analysis (Major Enhancement)
+The tool now performs a powerful new check across the entire uploaded file to enforce model consistency.
+	• Previous Logic: Model consistency was only checked within each work zone.
+	• New Logic: The analyzeGlobalInconsistencies function now establishes a "majority rule" for each model number based not only on its manufacturer, capacity, and refrigerant, but also its asset acronym (e.g., RTU, AHU).
+	• Benefit: This catches critical data entry errors where the same model number might be incorrectly assigned to different types of equipment across the entire project (e.g., a model XYZ-123 being used for both an RTU in one zone and an AHU in another). These global errors are now displayed prominently at the top of the report.
+2. Intelligent HVAC Split System Counting
+The indoor/outdoor HVAC unit count, which is critical for verifying system integrity, is now more accurate.
+	• Previous Logic: All AHU (Air Handling Unit) assets were counted as indoor units.
+	• New Logic: The tool now identifies self-contained or packaged AHUs by searching for keywords like package, roof top, or make up air unit in the asset description. These units are now correctly excluded from the indoor unit count, preventing false mismatches.
+3. Granular "Required System" Checks for Flooring (Meetinghouse)
+The validation for required flooring systems in Meetinghouses is now more precise.
+	• Previous Logic: The tool performed a general check for the presence of any flooring type.
+	• New Logic: The check is now split into two distinct requirements: "Flooring (Building Envelope)" and "Flooring (Cultural Center)". The tool now validates the presence of these specific flooring systems by cross-referencing the asset's att_Areas Served field, ensuring the right type of flooring is documented for the right area.
+4. Robust Parent Asset Validation
+The logic for verifying parent-child asset relationships has been completely overhauled for greater accuracy.
+	• Previous Logic: Parent validation was based on a simple string search (e.g., checking if the parent tag contained "FRK"). This was unreliable.
+	• New Logic: The tool now finds the parent asset in the dataset by its exact TagID and verifies that its acronym is correct. This ensures: 
+		○ A Duct Furnace (DF) is correctly parented to an Air Handling Unit (AHU).
+		○ A Forklift Battery (FLB) is correctly parented to a Forklift (FRK).
+5. Additional Validation Rules
+	• Forklift Capacity: A new rule requires that if a Forklift's (FRK) att_Capacity Unit is "Other (List In Comments)", the att_Validation Comment field must specify the capacity using the words pounds or lbs.
+	• Room Name Formatting: Added a check to flag two-word cardinal directions (e.g., "North East") and recommend the correct compound word ("Northeast").
+	• Coil Validation: The requirement to document the presence or absence of a cooling coil in the comments has been extended to Electric Furnaces (EF) and Air Handling Units (AHU) that have no refrigerant listed.
+	• Unnecessary Parent Tags: The tool now flags assets that have a parent tag assigned but do not require one (e.g., an RTU with a parent).
+
+
+🐛 Bug Fixes & Code Refinements
+	• Smarter Redundant Comment Check: The logic that flags redundant comments (where the comment repeats the att_Areas Served field) is now more intelligent. It uses a synonym dictionary to avoid flagging legitimate comments that use different but related phrasing.
+	• Corrected Global Error Reporting: Fixed a bug where global model inconsistency errors were incorrectly grouped with the first work zone's report. They are now correctly displayed in their own dedicated section.
+	• Data Definition Correction: The validation rule for Forklift (FRK) capacity unit was updated from Tons to Other (List In Comments) to align with the new comment validation rule.
+	• Work Zone Analysis Stability: Resolved an issue where duplicate asset number errors and local model inconsistency errors were not being correctly included in the downloadable CSV reports.
+	• General Stability: Miscellaneous internal syntax errors were corrected to improve script reliability.
+
+
+🎨 UI/UX Improvements
+	• Dedicated Global Errors Section: Global model inconsistencies are now presented in a distinct, high-visibility collapsible section at the top of the report, bordered in red to draw immediate attention.
+	• "Copy Table" Functionality: A "Copy Table" button has been added to each work zone's error details section, allowing users to easily copy all errors for that zone to their clipboard in a spreadsheet-friendly format.
+	• "Not Found" Asset List: The report for each work zone now includes a clear, bulleted list of all assets that have been explicitly documented as "Not Found," improving visibility.
+	• Clearer System Status: The "System Verifications" summary now uses icons (✅ Found, ⚠️ Documented Not Found, ❌ Missing) for at-a-glance readability.
+<img width="740" height="1525" alt="image" src="https://github.com/user-attachments/assets/e8fd8af8-e850-4c63-87de-c9dc41370b32" />
+
+
 * **Fix:** Added logic to handle **"Other (List in Comments)"** as a valid refrigerant entry and verify the associated comment.
 
 * **Fix:** Updated validation rules to make capacity entry **optional** for Fire Risers (FSSD/FSSW) and Fire Alarm Panels (FACP).
