@@ -100,7 +100,7 @@ The tool performs a wide array of checks, categorized for clarity.
 
 * **Fix:** Updated validation rules to make capacity entry **optional** for Fire Risers (FSSD/FSSW) and Fire Alarm Panels (FACP).
 
-# Asset Data QA/QC Analyst: Change Log (2025-10-20)
+# Change Log v4.2 (2025-10-20)
 
 This update introduces significant enhancements to the validation logic, improves data consistency checks across large datasets, and refines the user interface for a clearer, more actionable audit report.
 
